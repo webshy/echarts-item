@@ -37,6 +37,44 @@
 
     //各省份的地图json文件
     var provinces = {
+      '北京': './json/beijing.json',
+      '天津': './json/tianjing.json',
+      '上海': './json/shanghai.json',
+      '重庆': './json/chongqing.json',
+      '河北': './json/hebei.json',
+      '河南': './json/henan.json',
+      '云南': './json/yunnan.json',
+      '辽宁': './json/liaoning.json',
+      '黑龙江': './json/heilongjiang.json',
+      '湖南': './json/hunan.json',
+      '安徽': './json/anhui.json',
+      '山东': './json/shandong.json',
+      '新疆': './json/xinjiang.json',
+      '江苏': './json/jiangsu.json',
+      '浙江': './json/zhejiang.json',
+      '江西': './json/jiangxi.json',
+      '湖北': './json/hubei.json',
+      '广西': './json/guangxi.json',
+      '甘肃': './json/gansu.json',
+      '山西': './json/shanxi.json',
+      '内蒙古': './json/neimenggu.json',
+      '陕西': './json/shanxi3.json',
+      '吉林': './json/jilin.json',
+      '福建': './json/fujian.json',
+      '贵州': './json/guizhou.json',
+      '广东': './json/guangdong.json',
+      '青海': './json/qinghai.json',
+      '西藏': './json/xizang.json',
+      '四川': './json/sichuan.json',
+      '宁夏': './json/ningxia.json',
+      '海南': './json/hainan.json',
+      '台湾': './json/taiwan.json',
+      '香港': './json/xianggang.json',
+      '澳门': './json/aomen.json',
+
+
+
+      
     };
 
     //各省份的数据
@@ -109,20 +147,13 @@
     }, {
       name: '澳门'
     }];
-    let geoCoordMap = {
-      "武汉": [114.3896, 30.6628],
-      "南昌":[116.0046,28.6633],
-      "长沙":[113.0823,28.2568],
-      "南京":[118.8062,31.9208],
-      "成都":[103.9526,30.7617],
-      "石家庄":[114.4995,38.1006],
-    }
+
     for (var i = 0; i < allData.length; i++) {
       allData[i].value = Math.round(Math.random() * 100);
     }
 
 
-    loadMap('./data-1527045631990-r1dZ0IM1X.json', 'china');//初始化全国地图
+    loadMap('./json/quanguo.json', 'china');//初始化全国地图
 
     var timeFn = null;
 
@@ -134,7 +165,7 @@
         var name = params.name; //地区name
         var mapCode = provinces[name]; //地区的json数据
         if (!mapCode) {
-          // alert('无此区域地图显示');
+          alert('无此区域地图显示');
           return;
         }
 
@@ -150,7 +181,7 @@
       clearTimeout(timeFn);
 
       //返回全国地图
-      loadMap('json/data-1527045631990-r1dZ0IM1X.json', 'china');
+      loadMap('./json/quanguo.json', 'china');
     });
 
     /**
@@ -164,9 +195,11 @@
           echarts.registerMap(name, data);
           var option = {
             title: {
-              text: '地图下钻',
+              text: '地图省市区下钻',
               subtext: '双击返回中国地图',
-              left: 'center'
+              left: 'center',
+              top:'10',
+              show:false
             },
             toolbox: {
               feature: {
@@ -177,7 +210,7 @@
               }
             },
             tooltip: {
-              show: true,
+              show: false,
               formatter: function (params) {
                 if (params.data) return params.name + '：' + params.data['value']
               },
@@ -227,7 +260,7 @@
                   }
                 }
               },
-              data: allData
+              // data: allData
             }]
           };
           myChart.setOption(option);
