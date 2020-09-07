@@ -51,7 +51,37 @@
       echarts.registerMap('SoutheastAsia', mapJson);
 
       let geoCoordMap = {
-
+        " 湖北": ['72.31', '19.52'],
+        " 北京": ['110.46', '64.92'],
+        ' 上海': [140.48, 23.22],
+        ' 江苏': [141.78, 26.6],
+        ' 山东': [144, 35.65],
+        ' 天津': [142.2, 45.13],
+        ' 辽宁': [138.8, 50.8],
+        ' 吉林': [118.63, 63.75],
+        ' 黑龙江': [128.63, 59.75],
+        ' 浙江': [137.19, 19.26],
+        ' 福建': [123.3, 10.08],
+        ' 广东': [91.23, 7.5],
+        ' 海南': [102.35, 6.2],
+        ' 西藏': [66.11, 29.97],
+        ' 内蒙古': [100.65, 64.5],
+        ' 广西': [84.31, 10.80],
+        ' 云南': [76.73, 15.04],
+        ' 新疆': [67.68, 46.77],
+        ' 重庆': [67.54, 25.59],
+        ' 四川': [65.06, 35.67],
+        ' 青海': [66, 40.56],
+        ' 甘肃': ['71.73', '52.03'],
+        ' 宁夏': ['76.27', '56.47'],
+        ' 陕西': ['85.95', '61.27'],
+        ' 山西': ['91.53', '62.87'],
+        ' 河北': ['143.48', '40.03'],
+        ' 河南': ['143.65', '30.76'],
+        ' 安徽': ['133.27', '15.86'],
+        ' 湖南': ['110', '7.21'],
+        ' 江西': ['115.89', '7.68'],
+        ' 台湾': ['128.89', '12.68'],
 
         '北京': ['116.46', '39.92'],
         '上海': ['121.48', '31.22'],
@@ -64,7 +94,7 @@
         '黑龙江': ['126.63', '45.75'],
         '浙江': ['120.19', '30.26'],
         '福建': ['119.3', '26.08'],
-        '山东': ['117.54', '36.65'],
+        '山东': ['119.54', '36.65'],
         '河南': ['113.65', '34.76'],
         '湖北': ['114.31', '30.52'],
         '湖南': ['113', '28.21'],
@@ -89,11 +119,134 @@
         '江苏': ['119.78', '32.04']
       };
       let data = [
-
+        {
+          name: '湖北',
+          value: '123'
+        },
+        {
+          name: '北京',
+        },
+        {
+          name: '上海',
+        },
+        {
+          name: '江苏',
+        },
+        {
+          name: '山东',
+        },
+        {
+          name: '天津',
+        },
+        {
+          name: '辽宁',
+        },
+        {
+          name: '吉林',
+        },
+        {
+          name: '黑龙江',
+        },
+        {
+          name: '浙江',
+        },
+        {
+          name: '福建',
+        },
+        {
+          name: '广东',
+        },
+        {
+          name: '海南'
+        },
+        {
+          name: '内蒙古'
+        },
+        {
+          name: '广西'
+        },
+        {
+          name: '云南'
+        },
+        {
+          name: '西藏'
+        },
+        {
+          name: '新疆'
+        },
+        {
+          name: '重庆'
+        },
+        {
+          name: '四川'
+        },
+        {
+          name: '青海'
+        },
+        {
+          name: '甘肃'
+        },
+        {
+          name: '宁夏'
+        },
+        {
+          name: '陕西'
+        },
+        {
+          name: '山西'
+        },
+        {
+          name: '河北'
+        },
+        {
+          name: '河南'
+        },
+        {
+          name: '安徽'
+        },
+        {
+          name: '湖南'
+        },
+        {
+          name: '江西'
+        },
+        {
+          name: '台湾'
+        },
       ];
 
       let pathname = [
-
+        ' 湖北',
+        ' 北京',
+        ' 上海',
+        ' 江苏',
+        ' 山东',
+        ' 天津',
+        ' 辽宁',
+        ' 吉林',
+        ' 黑龙江',
+        ' 浙江',
+        ' 福建',
+        ' 广东',
+        ' 海南',
+        ' 内蒙古',
+        ' 广西',
+        ' 云南',
+        ' 西藏',
+        ' 新疆',
+        ' 重庆',
+        ' 四川',
+        ' 青海',
+        ' 甘肃',
+        ' 宁夏',
+        ' 陕西',
+        ' 山西',
+        ' 河北',
+        ' 河南',
+        ' 安徽',
+        ' 湖南',
+        ' 江西',
+        ' 台湾'
       ];
       // const pathname = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
 
@@ -115,7 +268,7 @@
             symbolSize: 18,
             itemStyle: {
               normal: {
-                color: 'red',
+                color: '#fff',
                 borderColor: '#000'
               }
             }
@@ -148,7 +301,7 @@
       }
 
       let option = {
-        backgroundColor: '#fff',
+        backgroundColor: '#000',
         title: {
           show: false,
           text: '全国国GDP总量',
@@ -176,14 +329,17 @@
           min: 500000,
           max: 38000000,
           inRange: {
-            color: ['#CCC', '#FEFEFE', '#EFEFEF', '#EEEEEE', '#EDEDED']
+            //   color: ['#CCC', '#FEFEFE', '#EFEFEF', '#EEEEEE', '#EDEDED']
+            // },
+            color: ['#0a3a87', '#EFEFEF']
           },
           // text: ['High', 'Low'], // 文本，默认为数值文本
           textStyle: {
             fontSize: 16,
             color: '#EFEFEF'
           },
-          calculable: true
+          calculable: true,
+
         },
         geo: {
           map: 'SoutheastAsia',
@@ -200,7 +356,7 @@
             // 选中时候 显示各省份市 文字
             emphasis: {
               show: true,
-              textStyle:{
+              textStyle: {
                 color: '#fff'
               }
             }
@@ -220,37 +376,8 @@
               areaColor: '#2a333d'
             }
           },
-          // // zoom: 1, //当前视角的缩放比例
-          // roam: true, //是否开启平游或缩放
-          // scaleLimit: { //滚轮缩放的极限控制
-          //   min: -100,
-          //   max: 10
-          // },
         },
         series: [
-          // {
-          //   name: '定位',
-          //   type: 'effectScatter',
-          //   coordinateSystem: 'geo',
-          //   data: [{ name: '云南', value: [106, 25] }],
-          //   symbolSize: function (val) {
-          //     return val[2] / 2;
-          //   },
-          //   showEffectOn: 'render',
-          //   rippleEffect: {
-          //     brushType: 'stroke'
-          //   },
-          //   hoverAnimation: true,
-          //   itemStyle: {
-          //     normal: {
-          //       color: '#0ce928',
-          //       shadowBlur: 20,
-          //       shadowColor: '#0ce928',
-          //     }
-          //   },
-          //   zlevel: 1
-          // },
-
           {
             type: 'lines',
             zlevel: 2,
@@ -266,15 +393,17 @@
             lineStyle: {
               type: 'solid',
               normal: {
-                color: '#efefef',
+                // color: '#efefef',
+                color: '#0a3a87',
                 // color:'#0b2140',
                 width: 1,
-                opacity: 0.4,
+                opacity: 1,
                 // curveness: 0.2 //线的弧度
               }
             },
             data: formtGCData(geoCoordMap, data, pathname, false)
           }, {
+            // 控制坐标点 设置
             // type: 'effectScatter',
             type: 'scatter',
             coordinateSystem: 'geo',
@@ -289,16 +418,27 @@
                 // show: true,
                 show: false,
                 position: 'right',
-                formatter: '{b}'
+                formatter: '{b}',
+                textStyle: {
+                  color: '#fff'
+                }
               },
-              emphasis: { show: true }
+              emphasis: {
+                show: true,
+                emphasis: {
+                  show: true,
+                  textStyle: {
+                    color: '#fff',
+                  }
+                }
+              }
             },
             // 控制 坐标 闪烁的点 大小
             symbolSize: 0,
             // symbolSize: 5,
             itemStyle: {
               normal: {
-                shadowColor: 'rgba(0, 0, 0, 0.5)',
+                // shadowColor: 'rgba(0, 0, 0, 0.5)',
                 shadowBlur: 20,
                 color: '#EFEFEF',
                 fontWeight: 400,
@@ -335,7 +475,7 @@
     var centers = { centerW: winWidth / 2, centerH: winHeight / 2 };
     console.log(centers)
 
-    SolidCircle(centers.centerW, centers.centerH, 300, 2, "#0a3a87");
+    // SolidCircle(centers.centerW, centers.centerH, 300, 2, "#0a3a87");
   </script>
 </body>
 
