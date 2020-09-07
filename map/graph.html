@@ -41,7 +41,7 @@
                         "show": true
                     },
                 },
-                'datas':"{'ip':'12.192.192}"
+                'datas': "{'ip':'12.192.192}"
             },
             {
                 "id": 1,
@@ -292,91 +292,91 @@
 
         ]
         var link1 = [{
-                "source": 0,
-                "target": 1
-            },
-            {
-                "source": 0,
-                "target": 2
-            },
-            {
-                "source": 0,
-                "target": 3
-            },
-            {
-                "source": 0,
-                "target": 4
-            },
-            {
-                "source": 0,
-                "target": 5
-            },
-            {
-                "source": 0,
-                "target": 6
-            },
-            {
-                "source": 0,
-                "target": 7
-            },
-            {
-                "source": 0,
-                "target": 8
-            },
-            {
-                "source": 0,
-                "target": 9
-            },
-            {
-                "source": 0,
-                "target": 10
-            },
-            {
-                "source": 1,
-                "target": 11
-            },
-            {
-                "source": 1,
-                "target": 12
-            },
-            {
-                "source": 1,
-                "target": 13
-            },
-            {
-                "source": 1,
-                "target": 14
-            },
-            {
-                "source": 14,
-                "target": 15
-            },
-            {
-                "source": 14,
-                "target": 16
-            },
-            {
-                "source": 14,
-                "target": 17
-            },
-            {
-                "source": 14,
-                "target": 18
-            },
-            {
-                "source": 18,
-                "target": 19
-            },
+            "source": 0,
+            "target": 1
+        },
+        {
+            "source": 0,
+            "target": 2
+        },
+        {
+            "source": 0,
+            "target": 3
+        },
+        {
+            "source": 0,
+            "target": 4
+        },
+        {
+            "source": 0,
+            "target": 5
+        },
+        {
+            "source": 0,
+            "target": 6
+        },
+        {
+            "source": 0,
+            "target": 7
+        },
+        {
+            "source": 0,
+            "target": 8
+        },
+        {
+            "source": 0,
+            "target": 9
+        },
+        {
+            "source": 0,
+            "target": 10
+        },
+        {
+            "source": 1,
+            "target": 11
+        },
+        {
+            "source": 1,
+            "target": 12
+        },
+        {
+            "source": 1,
+            "target": 13
+        },
+        {
+            "source": 1,
+            "target": 14
+        },
+        {
+            "source": 14,
+            "target": 15
+        },
+        {
+            "source": 14,
+            "target": 16
+        },
+        {
+            "source": 14,
+            "target": 17
+        },
+        {
+            "source": 14,
+            "target": 18
+        },
+        {
+            "source": 18,
+            "target": 19
+        },
 
         ]
         option = {
             backgroundColor: '#000',
             tooltip: {//弹窗
-            trigger: 'item',
-                formatter: function(params) {
+                trigger: 'item',
+                formatter: function (params) {
                     // console.log(params,'---')
-                    return  params.data.datas
-                   
+                    return params.data.datas
+
                 }
             },
             color: ['#09022C',
@@ -414,14 +414,14 @@
                 xAxisIndex: 0, //x轴坐标 有多种坐标系轴坐标选项
                 yAxisIndex: 0, //y轴坐标
                 force: {
-                    // gravity:0.1,
+                    gravity:0.1,
                     repulsion: 400,
                     edgeLength: [150, 200],
                     // edgeLength: [10, 50],
-                    layoutAnimation: false,
+                    layoutAnimation: true,
                     friction: 0.6,
                 },
-                cursor: "pointer", 
+                cursor: "pointer",
                 roam: true,//是否开启鼠标缩放和平移漫游。默认不开启。如果只想要开启缩放或者平移，可以设置成 'scale' 或者 'move'。设置成 true 为都开启
                 nodeScaleRatio: 0.6,//鼠标漫游缩放时节点的相应缩放比例，当设为0时节点不随着鼠标的缩放而缩放
                 draggable: true,//节点是否可拖拽，只在使用力引导布局的时候有用。
@@ -513,6 +513,12 @@
 
         // 使用刚指定的配置项和数据显示图表。
         myChart.setOption(option);
+
+        window.addEventListener("resize", function () {
+            setTimeout(() => {
+                myChart.resize();
+            },1000)    
+        });
     </script>
 </body>
 

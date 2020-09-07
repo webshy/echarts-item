@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>拖动画圆</title>
+</head>
+
+<body>
+  <style>
+    html,
+    body {
+      margin: 0px;
+      padding: 0px;
+      font-size: 12px;
+    }
+
+    #canvas {
+      width: 600px;
+      height: 500px;
+      margin: 20px auto;
+      border: 1px solid #00aa00;
+      background: #F8F8F8;
+      cursor: crosshair;
+      position: relative;
+    }
+
+    #canvas div {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      font-size: 1px;
+      line-height: 1px;
+      overflow: hidden;
+      background: #f00;
+    }
+  </style>
+
+  <div id="canvas"></div>
+
+  <script>
+    function circle(x, y, r) {
+
+      var html = [],
+        radio, xx, yy;
+      html.push("<div style='left:" + (x - 2) + "px; top:" + y + "px; width:5px;'></div>");
+      html.push("<div style='left:" + x + "px; top:" + (y - 2) + "px; height:5px;'></div>");
+
+      for (var i = 0.0; i < 360; i += 0.5) {
+        radio = i * Math.PI / 180;
+        xx = r * Math.cos(radio) + x;
+        yy = r * Math.sin(radio) + y;
+        html.push("<div style='left:" + xx + "px; top:" + yy + "px;'></div>");
+      }
+
+      return html.join("");
+    }
+
+    function Point(x, y) {
+      this.x = x || 0;
+      this.y = y || 0;
+    }
+
+    function getOffset(obj) {
+      var x = 0,
+        y = 0;
+      do {
+        x += obj.offsetLeft;
+        y += obj.offsetTop;
+        obj = obj.offsetParent;
+      } while (obj);
+      return new Point(x, y);
+    }
+
+    window.onload = function () {
+      var canvas = document.getElementById("canvas"),
+        origin, pt, offset, isClick = false,
+        r, neworigin;
+
+      offset = getOffset(canvas);
+
+      canvas.onmousedown = function (oEvent) {
+        oEvent = oEvent || event;
+        origin = new Point(oEvent.clientX - offset.x, oEvent.clientY - offset.y);
+        isClick = true;
+      };
+
+      document.onmousemove = function (oEvent) {
+        if (!isClick) {
+          return;
+        }
+
+        oEvent = oEvent || event;
+        pt = new Point(oEvent.clientX - offset.x, oEvent.clientY - offset.y);
+
+        neworigin = new Point((origin.x + (oEvent.clientX - offset.x)) / 2, (origin.y + (oEvent.clientY -
+          offset.y)) / 2);
+
+        r = Math.sqrt((pt.x - neworigin.x) * (pt.x - neworigin.x) + (pt.y - neworigin.y) * (pt.y -
+          neworigin.y));
+
+        canvas.innerHTML = circle(neworigin.x, neworigin.y, r);
+      };
+
+      canvas.onmouseup = function () {
+        isClick = false;
+      };
+    };
+  </script>
+</body>
+
+</html>
