@@ -29,11 +29,74 @@
       /* transform: translate(-50%, -50%); */
 
     }
+
+    ul,
+    li {
+      list-style: none;
+      color: #fff;
+    }
+
+    .title {
+      position: absolute;
+      z-index: 99;
+      top: 20px;
+      left: 20px;
+      color: #fff;
+      width: 250px;
+    }
+
+    .title-top-text {
+      font-weight: 500;
+    }
+
+    .title-top-text span {
+      font-size: 12px;
+      border: 1px solid #888888;
+      border-radius: 4px;
+      padding: 0 1px;
+      color: #888888;
+    }
+
+    .title ul {
+      padding: 10px 20px 0 15px;
+      background-color: #212226;
+      border: 1px dashed #35afd8;
+      border-radius: 4px;
+      /* text-align: center; */
+      font-size: 13px;
+    }
+
+    .title li {
+      margin-bottom: 15px;
+      color: #35afd8;
+    }
+
+    .title li span {
+      width: 130px;
+      display: inline-block;
+      text-align: right;
+      color: #fff;
+    }
   </style>
 </head>
 
 <body>
   <!-- <div class="content">  -->
+  <div class="title">
+    <h3 class="title-top-text">网络拓扑结构图 <span>2020</span></h3>
+    <div>
+      <ul>
+        <li>中国</li>
+        <li><span>ip存活数量：</span>70040542</li>
+        <li><span>核心骨干节点数量：</span>6589</li>
+        <li><span>端口服务数量：</span>210311040</li>
+        <li><span>网络设备数量：</span>10323059</li>
+        <li><span>安全设备数量：</span>938693</li>
+        <li><span>主机设备数量：</span>58662258</li>
+        <li><span>工控设备数量：</span>116532</li>
+      </ul>
+    </div>
+  </div>
   <div id="chart" class="chart"></div>
   <!-- </div> -->
   <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
@@ -74,7 +137,7 @@
         ' 青海': [66, 40.56],
         ' 甘肃': ['71.73', '52.03'],
         ' 宁夏': ['76.27', '56.47'],
-        ' 陕西': ['85.95', '61.27'],
+        ' 陕西': ['83.95', '61.27'],
         ' 山西': ['91.53', '62.87'],
         ' 河北': ['143.48', '40.03'],
         ' 河南': ['143.65', '30.76'],
@@ -329,8 +392,6 @@
           min: 500000,
           max: 38000000,
           inRange: {
-            //   color: ['#CCC', '#FEFEFE', '#EFEFEF', '#EEEEEE', '#EDEDED']
-            // },
             color: ['#0a3a87', '#EFEFEF']
           },
           // text: ['High', 'Low'], // 文本，默认为数值文本
@@ -438,7 +499,7 @@
             // symbolSize: 5,
             itemStyle: {
               normal: {
-                // shadowColor: 'rgba(0, 0, 0, 0.5)',
+                shadowColor: 'rgba(0, 0, 0, 0.5)',
                 shadowBlur: 20,
                 color: '#EFEFEF',
                 fontWeight: 400,
