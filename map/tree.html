@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body,
+    html {
+      height: 100%;
+      margin: 0;
+      /* background-color: #000; */
+    }
+
+    /* .content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    } */
+    .chart {
+      /* height: 100%; */
+      height: 80%;
+      width: 100%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="chart" class="chart"></div>
+
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+  <script src="./echarts-full.min.js"></script>
+  <script>
+    // var uploadedDataURL = "./data-1498630743837-BygD9pgVW.json";
+    var uploadedDataURL = "./data-1527045631990-r1dZ0IM1X.json";
+    var myChart = echarts.init(document.getElementById('chart'));
+
+    var data = 
+    [
+      {
+      "name": "河北",
+      "children": [
+          {
+            "name": "石家庄市"
+          },
+          {
+            "name": "唐山市"
+          },
+          {
+            "name": "秦皇岛市"
+          },
+          {
+            "name": "邯郸市"
+          },
+          {
+            "name": "石家庄市"
+          },
+          {
+            "name": "邢台市"
+          },
+          {
+            "name": "保定市"
+          },
+          {
+            "name": "张家口市"
+          },
+          {
+            "name": "承德市"
+          },
+          {
+            "name": "沧州市"
+          },
+          {
+            "name": "廊坊市"
+          },
+          {
+            "name": "衡水市"
+          },
+        ]
+      },
+      {
+        "name": "北京",
+        "children": [
+          {
+            "name": "西城区"
+          },
+        ]
+      }
+    ]
+
+
+    myChart.hideLoading();
+    // echarts.util.each(data.children, function (data, index) {
+    //   index % 1 === 0 && (data.collapsed = false);
+    // });
+    for (var i = 0; i < data.length; i++) {
+      // console.log(data[i], '+++')
+      echarts.util.each(data[i].children, function (d, index) {
+        console.log(d,'---')
+        console.log(data[i],'+++')
+        index % 1 === 0 && (d.collapsed = false);
+      });
+      
+    }
+
+
+
+
+    myChart.setOption(option = {
+      tooltip: {
+        trigger: 'item',
+      },
+      legend: {
+        top: '2%',
+        left: '3%',
+        orient: 'vertical',
+        data: [{
+          name: 'Common Command List',
+          icon: 'rectangle'
+        }],
+        borderColor: '#c23531'
+      },
+
+      series: [
+        {
+          type: 'tree',
+          // name: 'Common Command List',
+          data: data,
+          top: '5%',
+          left: '12%',
+          bottom: '2%',
+          right: '37%',
+          symbolSize: 13,
+
+          label: {
+            normal: {
+              position: 'left',
+              verticalAlign: 'middle',
+              align: 'right',
+              fontSize: 17,
+              fontWeight: 'bolder',
+              fontStyle: 'oblique'
+            }
+          },
+
+          leaves: {
+            label: {
+              normal: {
+                position: 'right',
+                verticalAlign: 'middle',
+                align: 'left'
+              }
+            }
+          },
+
+          expandAndCollapse: true,
+
+          animationDuration: 550,
+          animationDurationUpdate: 750,
+        }
+      ]
+    });
+    window.addEventListener("resize", function () {
+      myChart.resize();
+    });
+  </script>
+</body>
+
+</html>
