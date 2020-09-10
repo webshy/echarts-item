@@ -22,11 +22,11 @@
     .chart {
       height: 100%;
       /* height: 60%; */
-      /* width: 50%; */
-      /* position: absolute; */
-      /* top: 50%; */
-      /* left: 50%; */
-      /* transform: translate(-50%, -50%); */
+      /* width: 100%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%); */
 
     }
 
@@ -101,6 +101,7 @@
   <!-- </div> -->
   <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
   <script src="./echarts-full.min.js"></script>
+  <script src="./unit.js"></script>
   <script>
     // var uploadedDataURL = "./data-1498630743837-BygD9pgVW.json";
     var uploadedDataURL = "./data-1527045631990-r1dZ0IM1X.json";
@@ -516,27 +517,15 @@
     window.addEventListener("resize", function () {
       myChart.resize();
     });
-    //功能：画实心圆
-    //参数：圆心坐标，半径，精确度，背景颜色
-    function SolidCircle(cx, cy, r, p, color) {
-      var s = 1 / (r / p);
-      for (var i = 0; i < Math.PI * 2; i += s) {
-        var div = document.createElement("div");
-        div.style.position = "absolute";
-        div.style.left = Math.sin(i) * r + cx + "px";
-        div.style.top = Math.cos(i) * r + cy + "px";
-        div.style.width = p + "px";
-        div.style.height = p + "px";
-        div.style.backgroundColor = color;
-        document.body.appendChild(div);
-      }
-    }
+    // 获取 页面 中心 坐标点
     winWidth = document.body.clientWidth || document.documentElement.clientWidth
     winHeight = document.body.clientHeight || document.documentElement.clientHeight
     var centers = { centerW: winWidth / 2, centerH: winHeight / 2 };
     console.log(centers)
-
-    // SolidCircle(centers.centerW, centers.centerH, 300, 2, "#0a3a87");
+    // 绘制坐标点  和  圆
+    drawCoordinate(centers.centerH,centers.centerW,'pink')
+    // drawCoordinate(361,769,'pink')
+    SolidCircle(centers.centerW, centers.centerH, 300, 2, "#0a3a87");
   </script>
 </body>
 
