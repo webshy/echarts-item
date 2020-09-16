@@ -25,7 +25,7 @@
       "nodes": [{
         "name": "A",
         "value": [
-         "河北"
+          "河北"
         ],
         "category": "中心教师",
         "symbolSize": 50,
@@ -43,12 +43,12 @@
         "symbolSize": 20,
         "tooltip": {
           "formatter": "{b0}:{c0}"
-        }
+        },
       },
       {
         "name": "C",
         "category": "论文合作教师",
-        "symbolSize": 20
+        "symbolSize": 20,
       },
 
       {
@@ -61,7 +61,7 @@
         "symbolSize": 20,
         "tooltip": {
           "formatter": "{b0}:{c0}"
-        }
+        },
       },
       {
         "name": "N",
@@ -248,6 +248,12 @@
         nodeMap[graph.nodes[i].name] = graph.nodes[i];
         nodeMap[graph.nodes[i].name]['links'] = {};
         nodeMap[graph.nodes[i].name]['nodes'] = {};
+        // console.log(nodeMap[graph.nodes[i].name]['type'],'----')
+        // if(nodeMap[graph.nodes[i].name]['type']){
+        //   nodeMap[graph.nodes[i].name]['hasAppend'] = true;
+        // }else {
+        //   nodeMap[graph.nodes[i].name]['hasAppend'] = false;
+        // }
         nodeMap[graph.nodes[i].name]['hasAppend'] = false;
       }
       for (let i = 0; i < graph.links.length; i++) {
@@ -280,7 +286,7 @@
         currentGraph.nodes[n.name] = n;
       });
       Object.values(node.links).forEach(l => {
-        currentGraph.links[l.source + "_" + l.target] = l;
+        currentGraph.links[l.source + "" + l.target] = l;
       });
       node.hasAppend = true;
       redrawGraph();
@@ -311,6 +317,7 @@
       myChart.setOption(option);
     }
     const option = {
+      // backgroundColor: '#000',
       title: {
         text: graphTitle,
         top: 'top',
@@ -324,80 +331,19 @@
         layout: 'force',
         data: Object.values(currentGraph.nodes),
         links: Object.values(currentGraph.links),
-        categories: [{
-          name: '中心教师',
-          itemStyle: {
-            color: '#c23531'
-          },
-
-        },
-        {
-          name: '专著专利合作教师',
-          itemStyle: {
-            color: '#749f83'
-          },
-
-
-        },
-        {
-          name: '课程合作教师',
-          itemStyle: {
-            color: '#6e7074'
-          },
-
-        },
-        {
-          name: '论文合作教师',
-          itemStyle: {
-            color: '#2f4554'
-          },
-
-        },
-        {
-          name: '论文',
-          itemStyle: {
-            color: '#61a0a8'
-          },
-
-        },
-        {
-          name: '专著专利',
-          itemStyle: {
-            color: '#91c7ae'
-          },
-
-        },
-        {
-          name: '课程',
-          itemStyle: {
-            color: '#999ea4'
-          },
-
-
-        },
-        {
-          name: '项目合作教师',
-          itemStyle: {
-            color: '#DEB887'
-          },
-
-        },
-        {
-          name: '项目',
-          itemStyle: {
-            color: '#bda29a'
-          },
-
-        }
-        ],
+        categories: [],
         roam: true,
-        focusNodeAdjacency: false,
+        focusNodeAdjacency: true,
         itemStyle: {
           normal: {
-            borderColor: '#fff',
+            // borderColor: '#fff',
+            color: '#0a3a87',
             borderWidth: 1,
             shadowBlur: 10,
             shadowColor: 'rgba(0, 0, 0, 0.3)'
+          },
+          emphasis: {//高亮状态
+            color: '#35afd8',
           }
         },
         label: {
@@ -405,19 +351,21 @@
           formatter: '{b}'
         },
         lineStyle: {
-          color: 'target',
-          opacity: 0.6,
-          curveness: 0.3
+          color: '#0a3a87',
+          opacity: 1,
+          curveness: 0
         },
         emphasis: {
           lineStyle: {
-            width: 10
+            width: 2,
+            color: '#35afd8',
           }
         },
         force: {
           layoutAnimation: false,
-          repulsion: 500
-        }
+          repulsion: 600,
+        },
+        draggable: true,
       }]
     };
     init();
@@ -431,9 +379,26 @@
         }
       }
     });
+    myChart.on('mouseup', function (params) {
+      var option = myChart.getOption();
+      option.series[0].data[params.dataIndex].x = params.event.offsetX;
+      option.series[0].data[params.dataIndex].y = params.event.offsetY;
+      console.log( option.series[0].data[params.dataIndex].x, option.series[0].data[params.dataIndex].y)
+     
+      option.series[0].data = Object.values(currentGraph.nodes);
+      option.series[0].links = Object.values(currentGraph.links);
+      
+      option.series[0].data[params.dataIndex].fixed = true;
+      myChart.setOption(option);
+    });
 
     // 使用刚指定的配置项和数据显示图表。
     myChart.setOption(option);
+    window.addEventListener("resize", function () {
+      setTimeout(() => {
+        myChart.resize();
+      }, 1000)
+    });
   </script>
 </body>
 

@@ -414,7 +414,7 @@
                 xAxisIndex: 0, //x轴坐标 有多种坐标系轴坐标选项
                 yAxisIndex: 0, //y轴坐标
                 force: {
-                    gravity:0.1,
+                    gravity: 0.1,
                     repulsion: 400,
                     edgeLength: [150, 200],
                     // edgeLength: [10, 50],
@@ -513,11 +513,18 @@
 
         // 使用刚指定的配置项和数据显示图表。
         myChart.setOption(option);
-
+        // 解决 拖拽后 自动回到之前位置 
+        myChart.on('mouseup', function (params) {
+            var option = myChart.getOption();
+            option.series[0].data[params.dataIndex].x = params.event.offsetX;
+            option.series[0].data[params.dataIndex].y = params.event.offsetY;
+            option.series[0].data[params.dataIndex].fixed = true;
+            myChart.setOption(option);
+        });
         window.addEventListener("resize", function () {
             setTimeout(() => {
                 myChart.resize();
-            },1000)    
+            }, 1000)
         });
     </script>
 </body>
