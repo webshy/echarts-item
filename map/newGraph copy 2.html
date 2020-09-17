@@ -21,8 +21,8 @@
   <script src="./echarts-full.min.js"></script>
   <script>
     var myChart = echarts.init(document.getElementById('chart'));
-    var graph = {
-      "nodes": [{
+    var nodes = [
+      {
         "name": "A",
         "value": [
           "河北"
@@ -32,215 +32,70 @@
         "tooltip": {
           "formatter": "{b0}:{c0}"
         },
-      },
-      {
-        "name": "B",
-        "category": "论文",
-        "value": [
-          "期刊论文",
-          "2005"
-        ],
-        "symbolSize": 20,
-        "tooltip": {
-          "formatter": "{b0}:{c0}"
-        },
-      },
-      {
-        "name": "C",
-        "category": "论文合作教师",
-        "value": [
-          "信息与通信工程学院",
-          "立项日期：20131101"
-        ],
-        "symbolSize": 20,
-        "tooltip": {
-          "formatter": "{b0}:{c0}"
-        },
-      },
+       
+        "child": [
+          {
+            "name": "B",
+            "category": "论文",
+            "value": [
+              "期刊论文",
+              "2005"
+            ],
+            "symbolSize": 20,
+          },
+          {
+            "name": "C",
+            "category": "论文合作教师",
+            "value": [
+              "信息与通信工程学院",
+              "立项日期：20131101"
+            ],
+            "symbolSize": 20,
+          },
 
-      {
-        "name": "D",
-        "category": "项目",
-        "value": [
-          "信息与通信工程学院",
-          "立项日期：20131101"
-        ],
-        "symbolSize": 20,
-        "tooltip": {
-          "formatter": "{b0}:{c0}"
-        },
-      },
-      {
-        "name": "N",
-        "category": "项目合作教师",
-        "symbolSize": 20
-      },
-      {
-        "name": "Q",
-        "category": "项目",
-        "symbolSize": 20
-      },
-
-      {
-        "name": "S",
-        "category": "项目",
-        "symbolSize": 20
+          {
+            "name": "D",
+            "category": "项目",
+            "value": [
+              "信息与通信工程学院",
+              "立项日期：20131101"
+            ],
+            "symbolSize": 20,
+          },
+        ]
       },
       {
         "name": "E",
-        "category": "专著专利",
-        "symbolSize": 20,
-        "value": [
-          "专利文献",
-          "2009-07-21"
-        ],
-        "tooltip": {
-          "formatter": "{b0}:{c0}"
-        }
-      },
-      {
-        "name": "W",
-        "category": "专著专利",
-        "symbolSize": 20
-      },
-      {
-        "name": "Y",
-        "category": "专著专利",
-        "symbolSize": 20
-      },
-      {
-        "name": "Z",
-        "category": "专著专利",
-        "symbolSize": 20
-      },
-      {
-        "name": "F",
-        "category": "专著专利合作教师",
-        "symbolSize": 20
-      },
-      {
-        "name": "O",
-        "category": "专著专利合作教师",
-        "symbolSize": 20
-      },
-      {
-        "name": "P",
-        "category": "专著专利合作教师",
-        "symbolSize": 20
-      },
-      {
+        "category": "项目",
         "value": [
           "信息与通信工程学院",
-          "信息工程 "
+          "立项日期：20131101"
         ],
-        "name": "G",
-        "category": "课程",
         "symbolSize": 20,
-        "tooltip": {
-          "formatter": "{b0}:{c0}"
-        }
-      },
-      {
-        "name": "I",
-        "category": "课程",
-        "symbolSize": 20
-      },
-      {
-        "name": "L",
-        "category": "课程",
-        "symbolSize": 20
-      },
-      {
-        "name": "H",
-        "category": "课程合作教师",
-        "symbolSize": 20
-      },
-      {
-        "name": "M",
-        "category": "课程合作教师",
-        "symbolSize": 20
       }
 
+    ]
+    console.log(nodes[0].child[0].name, "}}}")
+    var links = [{
+      "source": "A",
+      "target": nodes[0].child[0].name
+    },
+    // {
+    //   "source": "A",
+    //   "target": nodes[0].child[1].name
+    // },
+    {
+      "source": "B",
+      "target": "E"
+    },
+    {
+      "source": "A",
+      "target": "E"
+    },
+    ]
 
-      ],
-      "links": [{
-        "source": "A",
-        "target": "B",
-        "show": true
-      },
-      {
-        "source": "A",
-        "target": "C"
-      },
-      {
-        "source": "A",
-        "target": "D"
-      },
-      {
-        "source": "D",
-        "target": "N"
-      },
-      {
-        "source": "N",
-        "target": "Q"
-      },
-      {
-        "source": "N",
-        "target": "R"
-      },
-      {
-        "source": "A",
-        "target": "E"
-      },
-      {
-        "source": "A",
-        "target": "F"
-      },
-      {
-        "source": "F",
-        "target": "W"
-      },
-      {
-        "source": "F",
-        "target": "Y"
-      },
-      {
-        "source": "P",
-        "target": "Z"
-      },
-      {
-        "source": "E",
-        "target": "O"
-      },
-      {
-        "source": "E",
-        "target": "P"
-      },
-      {
-        "source": "A",
-        "target": "G"
-      },
-      {
-        "source": "G",
-        "target": "H"
-      },
-      {
-        "source": "G",
-        "target": "M"
-      },
-      {
-        "source": "M",
-        "target": "I"
-      },
-      {
-        "source": "M",
-        "target": "L"
-      }
-      ]
-    };
     const defaultCategory = "中心教师";
     const graphTitle = "力导向关系图--实现点击节点展开折叠";
-    let defaultName = ""
     const currentGraph = {
       nodes: {},
       links: {},
@@ -250,35 +105,34 @@
     function init() {
       // 根据定义的常量，产生currentGraph的默认数据
       // 遍历全部nodes和links，产生node映射map
-      for (let i = 0; i < graph.nodes.length; i++) {
-        if (graph.nodes[i].category === defaultCategory) {
-          currentGraph.nodes[graph.nodes[i].name] = graph.nodes[i];
-          defaultName = graph.nodes[i].name
+      for (let i = 0; i < nodes.length; i++) {
+        if (nodes[i].category === defaultCategory) {
+          currentGraph.nodes[nodes[i].name] = nodes[i];
         }
-        nodeMap[graph.nodes[i].name] = graph.nodes[i];
-        nodeMap[graph.nodes[i].name]['links'] = {};
-        nodeMap[graph.nodes[i].name]['nodes'] = {};
+        nodeMap[nodes[i].name] = nodes[i];
+        nodeMap[nodes[i].name]['links'] = {};
+        nodeMap[nodes[i].name]['nodes'] = {};
         // console.log(nodeMap[graph.nodes[i].name]['type'],'----')
         // if(nodeMap[graph.nodes[i].name]['type']){
         //   nodeMap[graph.nodes[i].name]['hasAppend'] = true;
         // }else {
         //   nodeMap[graph.nodes[i].name]['hasAppend'] = false;
-        // }
-        nodeMap[graph.nodes[i].name]['hasAppend'] = false;
+        // }''
+        nodeMap[nodes[i].name]['hasAppend'] = false;
       }
-      for (let i = 0; i < graph.links.length; i++) {
-        let link = graph.links[i];
+      for (let i = 0; i < links.length; i++) {
+        let link = links[i];
         if (nodeMap[link.source] !== undefined && nodeMap[link.target] !== undefined) {
           nodeMap[link.source].links[link.target] = link;
           nodeMap[link.source].nodes[nodeMap[link.target].name] = nodeMap[link.target];
         }
       }
 
-      for (let i = 0; i < graph.nodes.length; i++) {
-        graph.nodes[i].itemStyle = null;
-        graph.nodes[i].label = {
+      for (let i = 0; i < nodes.length; i++) {
+        nodes[i].itemStyle = null;
+        nodes[i].label = {
           normal: {
-            show: graph.nodes[i].symbolSize > 15
+            show: nodes[i].symbolSize > 15
           }
         };
       }
@@ -333,14 +187,6 @@
         top: 'top',
         left: 'center',
       },
-      center: ['20%', '50%'],
-      grid: {
-        x: 25,
-        y: 45,
-        x2: 5,
-        y2: 20,
-        borderWidth: 1
-      },
       tooltip: {},
       legend: [],
       animation: false,
@@ -351,7 +197,7 @@
         links: Object.values(currentGraph.links),
         categories: [],
         roam: true,
-        focusNodeAdjacency: false,
+        focusNodeAdjacency: true,
         itemStyle: {
           normal: {
             // borderColor: '#fff',
@@ -380,12 +226,12 @@
           }
         },
         force: {
-          layoutAnimation: true,
+          layoutAnimation: false,
           repulsion: 600,
         },
         draggable: true,
-        expandAndCollapse: true,
-      }]
+      }],
+
     };
     init();
     myChart.on('click', function (params) {
@@ -418,9 +264,6 @@
         myChart.resize();
       }, 1000)
     });
-    setTimeout(()=>{
-      append(defaultName)
-    },100)
   </script>
 </body>
 
