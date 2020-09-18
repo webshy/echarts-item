@@ -12,10 +12,28 @@
       height: 100%;
       width: 100%;
     }
+
+    .legend {
+      font-size: 12px;
+      position: absolute;
+      left: 50%;
+      top: 20px;
+    }
+
+    .legend span {
+      background-color: #ccc;
+      margin-left: 4px;
+      padding:5px;
+      border-radius: 4px;
+    }
   </style>
 </head>
 
 <body>
+  <div class="legend">
+    关基行业过滤:
+    <span>能源</span><span>交通</span><span>水利</span><span>医疗卫生</span><span>环境保护</span><span>工业制造</span><span>市政</span><span>广播电视</span><span>政府部门</span>
+  </div>
   <div id="chart" class="chart" style="width:100%;height:100%"></div>
   <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
   <script src="./echarts-full.min.js"></script>
@@ -156,10 +174,35 @@
         "symbolSize": 20
       },
       {
-        "name": "M",
+        "name": "3",
         "category": "课程合作教师",
         "symbolSize": 20
-      }
+      },
+      {
+        "name": "1",
+        "category": "课程合作教师",
+        "symbolSize": 20
+      },
+      {
+        "name": "2",
+        "category": "课程合作教师",
+        "symbolSize": 20
+      },
+      {
+        "name": "4",
+        "category": "课程合作教师",
+        "symbolSize": 20
+      },
+      {
+        "name": "5",
+        "category": "课程合作教师",
+        "symbolSize": 20
+      },
+      {
+        "name": "6",
+        "category": "课程合作教师",
+        "symbolSize": 20
+      },
 
 
       ],
@@ -229,17 +272,34 @@
         "target": "M"
       },
       {
-        "source": "M",
-        "target": "I"
+        "source": "O",
+        "target": "1"
       },
       {
-        "source": "M",
-        "target": "L"
-      }
+        "source": "1",
+        "target": "2"
+      },
+      {
+        "source": "2",
+        "target": "3"
+      },
+      {
+        "source": "3",
+        "target": "4"
+      },
+      {
+        "source": "4",
+        "target": "5"
+      },
+      {
+        "source": "5",
+        "target": "6"
+      },
       ]
     };
     const defaultCategory = "中心教师";
-    const graphTitle = "力导向关系图--实现点击节点展开折叠";
+    // const graphTitle = "力导向关系图--实现点击节点展开折叠";
+    const graphTitle = "";
     let defaultName = ""
     const currentGraph = {
       nodes: {},
@@ -283,6 +343,7 @@
         };
       }
       redrawGraph();
+      showFirstOne()
     }
     // 处理点击节点展开
     function append(nodeName) {
@@ -333,25 +394,16 @@
         top: 'top',
         left: 'center',
       },
-      center: ['20%', '50%'],
-      grid: {
-        x: 25,
-        y: 45,
-        x2: 5,
-        y2: 20,
-        borderWidth: 1
-      },
       tooltip: {},
-      legend: [],
+      // legend: [],
       animation: false,
       series: [{
         type: 'graph',
         layout: 'force',
         data: Object.values(currentGraph.nodes),
         links: Object.values(currentGraph.links),
-        categories: [],
         roam: true,
-        focusNodeAdjacency: false,
+        focusNodeAdjacency: true,
         itemStyle: {
           normal: {
             // borderColor: '#fff',
@@ -398,18 +450,18 @@
         }
       }
     });
-    myChart.on('mouseup', function (params) {
-      var option = myChart.getOption();
-      option.series[0].data[params.dataIndex].x = params.event.offsetX;
-      option.series[0].data[params.dataIndex].y = params.event.offsetY;
-      console.log(option.series[0].data[params.dataIndex].x, option.series[0].data[params.dataIndex].y)
+    // myChart.on('mouseup', function (params) {
+    //   var option = myChart.getOption();
+    //   option.series[0].data[params.dataIndex].x = params.event.offsetX;
+    //   option.series[0].data[params.dataIndex].y = params.event.offsetY;
+    //   console.log(option.series[0].data[params.dataIndex].x, option.series[0].data[params.dataIndex].y)
 
-      option.series[0].data = Object.values(currentGraph.nodes);
-      option.series[0].links = Object.values(currentGraph.links);
+    //   option.series[0].data = Object.values(currentGraph.nodes);
+    //   option.series[0].links = Object.values(currentGraph.links);
 
-      option.series[0].data[params.dataIndex].fixed = true;
-      myChart.setOption(option);
-    });
+    //   option.series[0].data[params.dataIndex].fixed = true;
+    //   myChart.setOption(option);
+    // });
 
     // 使用刚指定的配置项和数据显示图表。
     myChart.setOption(option);
@@ -418,9 +470,12 @@
         myChart.resize();
       }, 1000)
     });
-    setTimeout(()=>{
-      append(defaultName)
-    },100)
+    function showFirstOne() {
+      setTimeout(() => {
+        append(defaultName)
+      }, 100)
+    }
+
   </script>
 </body>
 
