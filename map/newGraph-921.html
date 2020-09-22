@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    html,
+    body {
+      margin: 0;
+      height: 100%;
+      width: 100%;
+    }
+
+    .legend {
+      font-size: 12px;
+      position: absolute;
+      left: 50%;
+      top: 20px;
+    }
+
+    .legend span {
+      background-color: #ccc;
+      margin-left: 4px;
+      padding: 5px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- <div class="legend">
+    关基行业过滤:
+    <span>能源</span><span>交通</span><span>水利</span><span>医疗卫生</span><span>环境保护</span><span>工业制造</span><span>市政</span><span>广播电视</span><span>政府部门</span>
+  </div> -->
+  <div id="chart" class="chart" style="width:100%;height:100%"></div>
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+  <script src="./echarts-full.min.js"></script>
+  <script>
+    var myChart = echarts.init(document.getElementById('chart'));
+    var graph = {
+      "nodes": [{
+        "name": "A",
+        "value": [
+          "河北"
+        ],
+        "category": "中心教师",
+        "symbolSize": 50,
+        "tooltip": {
+          "formatter": "{b0}:{c0}"
+        },
+      },
+      {
+        "name": "B",
+        "category": "论文",
+        "value": [
+          "期刊论文",
+          "2005"
+        ],
+        "symbolSize": 20,
+        "tooltip": {
+          "formatter": "{b0}:{c0}"
+        },
+      },
+      {
+        "name": "C",
+        "category": "论文合作教师",
+        "value": [
+          "信息与通信工程学院",
+          "立项日期：20131101"
+        ],
+        "symbolSize": 20,
+        "tooltip": {
+          "formatter": "{b0}:{c0}"
+        },
+      },
+
+      {
+        "name": "D",
+        "category": "项目",
+        "value": [
+          "信息与通信工程学院",
+          "立项日期：20131101"
+        ],
+        "symbolSize": 20,
+        "tooltip": {
+          "formatter": "{b0}:{c0}"
+        },
+      },
+      {
+        "name": "N",
+        "category": "项目合作教师",
+        "symbolSize": 20
+      },
+      {
+        "name": "Q",
+        "category": "项目",
+        "symbolSize": 20
+      },
+
+      {
+        "name": "S",
+        "category": "项目",
+        "symbolSize": 20
+      },
+      {
+        "name": "E",
+        "category": "专著专利",
+        "symbolSize": 20,
+        "value": [
+          "专利文献",
+          "2009-07-21"
+        ],
+        "tooltip": {
+          "formatter": "{b0}:{c0}"
+        }
+      },
+      {
+        "name": "W",
+        "category": "专著专利",
+        "symbolSize": 20
+      },
+      {
+        "name": "Y",
+        "category": "专著专利",
+        "symbolSize": 20
+      },
+      {
+        "name": "Z",
+        "category": "专著专利",
+        "symbolSize": 20
+      },
+      {
+        "name": "F",
+        "category": "专著专利合作教师",
+        "symbolSize": 20
+      },
+      {
+        "name": "O",
+        "category": "专著专利合作教师",
+        "symbolSize": 20
+      },
+      {
+        "name": "P",
+        "category": "专著专利合作教师",
+        "symbolSize": 20
+      },
+      {
+        "value": [
+          "信息与通信工程学院",
+          "信息工程 "
+        ],
+        "name": "G",
+        "category": "课程",
+        "symbolSize": 20,
+        "tooltip": {
+          "formatter": "{b0}:{c0}"
+        }
+      },
+      {
+        "name": "I",
+        "category": "课程",
+        "symbolSize": 20
+      },
+      {
+        "name": "L",
+        "category": "课程",
+        "symbolSize": 20
+      },
+      {
+        "name": "H",
+        "category": "课程合作教师",
+        "symbolSize": 20
+      },
+      {
+        "name": "3",
+        "category": "课程合作教师",
+        "symbolSize": 20
+      },
+      {
+        "name": "1",
+        "category": "课程合作教师",
+        "symbolSize": 20
+      },
+      {
+        "name": "2",
+        "category": "课程合作教师",
+        "symbolSize": 20
+      },
+      {
+        "name": "4",
+        "category": "课程合作教师",
+        "symbolSize": 20
+      },
+      {
+        "name": "5",
+        "category": "课程合作教师",
+        "symbolSize": 20
+      },
+      {
+        "name": "6",
+        "category": "课程合作教师",
+        "symbolSize": 20
+      },
+
+
+      ],
+      "links": [{
+        "source": "A",
+        "target": "B",
+        "show": true
+      },
+      {
+        "source": "A",
+        "target": "C"
+      },
+      {
+        "source": "A",
+        "target": "D"
+      },
+      {
+        "source": "D",
+        "target": "N"
+      },
+      {
+        "source": "N",
+        "target": "Q"
+      },
+      {
+        "source": "N",
+        "target": "R"
+      },
+      {
+        "source": "A",
+        "target": "E"
+      },
+      {
+        "source": "A",
+        "target": "F"
+      },
+      {
+        "source": "F",
+        "target": "W"
+      },
+      {
+        "source": "F",
+        "target": "Y"
+      },
+      {
+        "source": "P",
+        "target": "Z"
+      },
+      {
+        "source": "E",
+        "target": "O"
+      },
+      {
+        "source": "E",
+        "target": "P"
+      },
+      {
+        "source": "A",
+        "target": "G"
+      },
+      {
+        "source": "G",
+        "target": "H"
+      },
+      {
+        "source": "G",
+        "target": "M"
+      },
+      {
+        "source": "O",
+        "target": "1"
+      },
+      {
+        "source": "1",
+        "target": "2"
+      },
+      {
+        "source": "2",
+        "target": "3"
+      },
+      {
+        "source": "3",
+        "target": "4"
+      },
+      {
+        "source": "4",
+        "target": "5"
+      },
+      {
+        "source": "5",
+        "target": "6"
+      },
+      ]
+    };
+    const defaultCategory = "中心教师";
+    // const graphTitle = "力导向关系图--实现点击节点展开折叠";
+    const graphTitle = "";
+    let defaultName = ""
+    const currentGraph = {
+      nodes: {},
+      links: {},
+    };
+    const nodeMap = {};
+    // 页面加载时，第一次初始化图
+    function init() {
+      // 根据定义的常量，产生currentGraph的默认数据
+      // 遍历全部nodes和links，产生node映射map
+      for (let i = 0; i < graph.nodes.length; i++) {
+        if (graph.nodes[i].category === defaultCategory) {
+          currentGraph.nodes[graph.nodes[i].name] = graph.nodes[i];
+          defaultName = graph.nodes[i].name
+        }
+        nodeMap[graph.nodes[i].name] = graph.nodes[i];
+        nodeMap[graph.nodes[i].name]['links'] = {};
+        nodeMap[graph.nodes[i].name]['nodes'] = {};
+        nodeMap[graph.nodes[i].name]['hasAppend'] = false;
+      }
+      for (let i = 0; i < graph.links.length; i++) {
+        let link = graph.links[i];
+        if (nodeMap[link.source] !== undefined && nodeMap[link.target] !== undefined) {
+          nodeMap[link.source].links[link.target] = link;
+          nodeMap[link.source].nodes[nodeMap[link.target].name] = nodeMap[link.target];
+        }
+      }
+
+      for (let i = 0; i < graph.nodes.length; i++) {
+        graph.nodes[i].itemStyle = null;
+        graph.nodes[i].label = {
+          normal: {
+            show: graph.nodes[i].symbolSize > 15
+          }
+        };
+      }
+      redrawGraph();
+      showFirstOne()
+    }
+    // 处理点击节点展开
+    function append(nodeName) {
+      // 根据nodeName从nodeMap里拿出对应的nodes和links，并append到currentGraph.nodes currentGraph.links
+      let node = nodeMap[nodeName];
+      if (node.hasAppend === true || Object.keys(node.nodes).length === 0 || Object.keys(node.links).length === 0) {
+        // alert("无法继续展开");
+        console.log("无法继续展开")
+        return
+      }
+
+      Object.keys(node.nodes).map(e => {
+        currentGraph.nodes[node.nodes[e].name] = node.nodes[e];
+      })
+
+      Object.keys(node.links).map(e => {
+        currentGraph.links[node.links[e].source + "" + node.links[e].target] = node.links[e];
+      })
+
+      node.hasAppend = true;
+      redrawGraph();
+    }
+    // 处理点击节点收缩
+    function remove(nodeName) {
+      //根据nodeName从nodeMap里拿出对应的nodes和links，从currentGraph.nodes currentGraph.links删除当前节点的nodes和links并且递归
+      let node = nodeMap[nodeName];
+
+      Object.keys(node.nodes).map(e => {
+        delete currentGraph.nodes[node.nodes[e].name];
+        if (node.nodes[e].hasAppend === true && Object.keys(node.nodes[e]).length > 0) {
+          remove(node.nodes[e].name);
+        }
+      })
+      Object.keys(node.links).map(e => {
+        delete currentGraph.links[node.links[e].source + '_' + node.links[e].target];
+      })
+      // 设置flag 等于false
+      node.hasAppend = false;
+
+      redrawGraph();
+    }
+    // 根据更新后的option重新画图
+    function redrawGraph() {
+      option.series[0].data = Object.values(currentGraph.nodes);
+      option.series[0].links = Object.values(currentGraph.links);
+      // console.log(option);
+      myChart.setOption(option);
+    }
+    const option = {
+      // backgroundColor: '#000',
+      title: {
+        text: graphTitle,
+        top: 'top',
+        left: 'center',
+      },
+      tooltip: {},
+      legend: [],
+  
+      animation: false,
+      series: [{
+        type: 'graph',
+        layout: 'force',
+        data: Object.values(currentGraph.nodes),
+        links: Object.values(currentGraph.links),
+        roam: true,
+        focusNodeAdjacency: true,
+        itemStyle: {
+          normal: {
+            // borderColor: '#fff',
+            color: '#0a3a87',
+            borderWidth: 1,
+            shadowBlur: 10,
+            shadowColor: 'rgba(0, 0, 0, 0.3)'
+          },
+          emphasis: {//高亮状态
+            color: '#35afd8',
+          }
+        },
+        label: {
+          position: 'right',
+          formatter: '{b}'
+        },
+        lineStyle: {
+          color: '#0a3a87',
+          opacity: 1,
+          curveness: 0
+        },
+        emphasis: {
+          lineStyle: {
+            width: 2,
+            color: '#35afd8',
+          }
+        },
+        force: {
+          layoutAnimation: true,
+          repulsion: 600,
+        },
+        draggable: true,
+        expandAndCollapse: true,
+      }]
+    };
+    init();
+    myChart.on('click', function (params) {
+      if (params.dataType === "node") {
+        const node = nodeMap[params.data.name];
+        if (node.hasAppend === true) {
+          remove(node.name)
+        } else {
+          append(node.name);
+        }
+      }
+    });
+    // myChart.on('mouseup', function (params) {
+    //   var option = myChart.getOption();
+    //   option.series[0].data[params.dataIndex].x = params.event.offsetX;
+    //   option.series[0].data[params.dataIndex].y = params.event.offsetY;
+    //   console.log(option.series[0].data[params.dataIndex].x, option.series[0].data[params.dataIndex].y)
+
+    //   option.series[0].data = Object.values(currentGraph.nodes);
+    //   option.series[0].links = Object.values(currentGraph.links);
+
+    //   option.series[0].data[params.dataIndex].fixed = true;
+    //   myChart.setOption(option);
+    // });
+
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+    window.addEventListener("resize", function () {
+      setTimeout(() => {
+        myChart.resize();
+      }, 1000)
+    });
+    function showFirstOne() {
+      setTimeout(() => {
+        append(defaultName)
+      }, 100)
+    }
+
+  </script>
+</body>
+
+</html>
