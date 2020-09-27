@@ -112,7 +112,7 @@
     $.get(uploadedDataURL, function (mapJson) {
       myChart.hideLoading();
 
-      echarts.registerMap('SoutheastAsia', mapJson);
+      echarts.registerMap('china', mapJson);
 
       let geoCoordMap = {
         // " 湖北": ['72.31', '19.52'],
@@ -197,10 +197,12 @@
       let data = [
         {
           name: '湖北',
-          value: '123'
+          value: '123',
+          num:51
         },
         {
           name: '北京',
+          num:30
         },
         {
           name: '上海',
@@ -353,12 +355,17 @@
           tGeoDt.push({
             name: srcNam[i],
             value: geoData[srcNam[i]],
-            symbolSize: 18,
+            symbolSize: data[i].num > 40 ? 38 : 18 ,
             itemStyle: {
               normal: {
                 color: '#fff',
-                borderColor: '#000'
+                borderColor: '#000',
+                opacity:1
+              },
+              emphasis: {
+                borderColor: '#3acee9',
               }
+
             }
           });
 
@@ -417,7 +424,9 @@
           min: 500000,
           max: 38000000,
           inRange: {
-            color: ['#0a3a87', '#EFEFEF']
+            // color: ['#0a3a87', '#EFEFEF']
+            color: '#0a3a87'
+
           },
           // text: ['High', 'Low'], // 文本，默认为数值文本
           textStyle: {
@@ -428,7 +437,7 @@
 
         },
         geo: {
-          map: 'SoutheastAsia',
+          map: 'china',
           zoom: 0.6,
           // center: [104.114129, 37.550339],
           label: {
@@ -437,7 +446,7 @@
               show: false,
               textStyle: {
                 color: '#fff'
-              }
+              },
             },
             // 选中时候 显示各省份市 文字
             emphasis: {
@@ -447,33 +456,110 @@
               }
             }
           },
+          regions: [
+          {
+            name: "南海诸岛",
+            itemStyle: {
+              // 隐藏地图
+              normal: {
+                opacity: 0, // 为 0 时不绘制该图形
+              }
+            },
+            label: {
+              show: false // 隐藏文字
+            }
+          }
+        ],
+        // regions: [
+        //     {
+        //         name: '南海诸岛', 
+        //         value: 0, 
+        //         itemStyle: 
+        //             {normal: 
+        //                 {opacity: 0,
+        //                 label: {
+        //                     show: false
+                            
+        //                 }
+        //             }
+        //         }
+        //     }],
           // roam: true,
           silent: false,
           aspectScale: 0.75,
           itemStyle: {
             normal: {
-              shadowColor: '#002B45',
-              shadowBlur: 4,
-              shadowOffsetX: -6,
-              areaColor: '#005FB2',
-              borderColor: '#000'
+              // shadowColor: '#002B45',
+              // shadowBlur: 4,
+              // shadowOffsetX: -6,
+              // areaColor: '#005FB2',
+              // borderColor: '#000'
+              borderColor: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                    offset: 0,
+                    color: '#00F6FF'
+                }, {
+                    offset: 1,
+                    color: '#53D9FF'
+                }], false),
+                borderWidth: 3,
+                shadowColor: 'rgba(10,76,139,1)',
+                shadowOffsetY: 0,
+                shadowBlur: 60
             },
             emphasis: {
-              areaColor: '#2a333d'
+              areaColor: '#35afd8'
             }
           },
         },
         series: [
+            {
+            type: 'map',
+            map: 'china',
+            // geoIndex:0,
+            aspectScale: 0.75,
+            zoom:0.6,
+            label: {
+                normal: {
+                    show: false,
+                },
+                emphasis: {
+                    show: true,
+                    color: '#fff',
+                }
+            },
+            itemStyle: {  
+                normal: {
+                    areaColor: {
+                        x: 0,
+                        y: 0,
+                        x2: 0,
+                        y2: 1,
+                        colorStops: [{
+                            offset: 0,
+                            color: '#073684' // 0% 处的颜色
+                        }, {
+                            offset: 1,
+                            color: '#061E3D' // 100% 处的颜色
+                        }],
+                    },
+                    borderColor: '#215495',
+                    borderWidth: 1,
+                },
+                emphasis: {
+                  areaColor: '#35afd8'
+                }
+            },
+        },
           {
             type: 'lines',
             zlevel: 2,
             // 线 效果
             effect: {
               show: false,
-              period: 6,
+              period: 0,
               trailLength: 0.1,
-              color: 'maroon',
-              symbol: 'arrow',
+              // color: 'maroon',
+              // symbol: 'arrow',
               symbolSize: 8
             },
             lineStyle: {
@@ -520,16 +606,18 @@
               }
             },
             // 控制 坐标 闪烁的点 大小
+            // symbolSize: 0,
             symbolSize: 0,
-            // symbolSize: 5,
             itemStyle: {
               normal: {
-                shadowColor: 'rgba(0, 0, 0, 0.5)',
+                // shadowColor: 'rgba(0, 0, 0, 1)',
                 shadowBlur: 20,
-                color: '#EFEFEF',
+                // color: '#EFEFEF',
                 fontWeight: 400,
-                borderColor: '#FFF'
-              }
+                borderColor: '#FFF',
+                backgroundColor:'#0a3a87'
+              },
+
             },
             data: formtVData(geoCoordMap, data, pathname)
           }]
