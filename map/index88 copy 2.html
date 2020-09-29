@@ -116,7 +116,7 @@
 
       let geoCoordMap = {
         // " 湖北": ['72.31', '19.52'],
-        " 湖北": ['69.31', '22.52'],
+        " 湖北": ['69.31', '21.52'],
         " 北京": ['110.46', '64.92'],
         ' 上海': [140.48, 23.22],
         ' 江苏': [141.78, 26.6],
@@ -132,12 +132,12 @@
         ' 福建': [123.3, 10.08],
         // ' 广东': [91.23, 7.5],
         ' 广东': [91.23, 8],
-        ' 海南': [102.35, 6.2],
+        ' 海南': [98.35, 6.5],
         ' 西藏': [66.11, 29.97],
         // ' 内蒙古': [100.65, 64.5],
         ' 内蒙古': [100.65, 65.1],
-        ' 广西': [84.31, 10.80],
-        ' 云南': [76.73, 15.04],
+        ' 广西': [84.51, 10.30],
+        ' 云南': [77.73, 13.44],
         ' 新疆': [67.68, 46.77],
         ' 重庆': [67.54, 25.59],
         ' 四川': [65.06, 35.67],
@@ -150,13 +150,13 @@
         ' 河南': ['143.65', '30.76'],
         ' 安徽': ['133.27', '15.86'],
         // ' 湖南': ['110', '7.21'],
-        ' 湖南': ['110', '6.81'],
-        ' 江西': ['115.89', '7.68'],
+        ' 湖南': ['105', '6.51'],
+        ' 江西': ['119.89', '8.68'],
         ' 台湾': ['128.89', '12.68'],
         // ' 贵州': ['106.71', '26.57'],
-        ' 贵州': ['73.31', '18.52'],
-        ' 香港': ['114.1', '22.2'],
-        ' 澳门': ['113.33', '22.13'],
+        ' 贵州': ['73.31', '17.52'],
+        ' 香港': ['115.1', '7.2'],
+        ' 澳门': ['110.33', '6.83'],
 
         '北京': ['116.46', '39.92'],
         '上海': ['121.48', '31.22'],
@@ -355,17 +355,21 @@
           tGeoDt.push({
             name: srcNam[i],
             value: geoData[srcNam[i]],
-            symbolSize: data[i].num > 40 ? 38 : 18 ,
+            // symbolSize: data[i].num > 40 ? 38 : 18 ,
+            // symbolSize: Math.floor(Math.random() * (50 - 20 + 1)) + 20 ,
+            symbolSize:20,
             itemStyle: {
               normal: {
                 color: '#fff',
                 borderColor: '#000',
-                opacity:1
+                opacity:1,
               },
               emphasis: {
                 borderColor: '#3acee9',
-              }
-
+                shadowBlur: 0,
+                borderWidth: 1,
+              },
+            
             }
           });
 
@@ -512,7 +516,7 @@
           },
         },
         series: [
-            {
+        {
             type: 'map',
             map: 'china',
             // geoIndex:0,
@@ -547,7 +551,8 @@
                 },
                 emphasis: {
                   areaColor: '#35afd8'
-                }
+                },
+               
             },
         },
           {
@@ -580,11 +585,13 @@
             type: 'scatter',
             coordinateSystem: 'geo',
             zlevel: 2,
+            hoverAnimation:false,
             rippleEffect: {
               // period: 4,
               // scale: 2.5,
               brushType: 'stroke'
             },
+            
             label: {
               normal: {
                 // show: true,
@@ -636,7 +643,7 @@
     console.log(centers)
     // 绘制坐标点  和  圆
     // drawCoordinate(centers.centerH,centers.centerW,'pink')
-    drawCoordinate(361,769,'pink')
+    // drawCoordinate(361,769,'pink')
     // SolidCircle(centers.centerW, centers.centerH, 300, 2, "#0a3a87");
     SolidCircle(centers.centerW, centers.centerH, 300, 2, "pink");
   </script>
