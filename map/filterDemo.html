@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button id="btn" οnclick="search()">点击</button>
+  <script>
+    document.getElementById('btn').onclick = function search () {
+      let newArr =[]
+      graph_nodes.forEach(i => {
+         i.relations.map(k => {
+           
+            for(o in k){
+              // console.log(k[o])
+              if(k[o] == '交通'){
+                newArr.push(i)
+              }
+
+            
+            }
+     
+           
+         })
+        
+      // graph_nodes.forEach(i => {
+      //    i.relations.map(k => {
+      //      console.log(k,'--')
+      //      if(k['202.181.97.61']){
+      //        newArr.push(i)
+      //      }
+      //    })
+        // console.log(i.relations)
+        // Object.keys(i.relations).forEach(key => {
+        //   console.log(key)
+        //   if(key['202.181.97.61']){
+        //     alert(key)
+        //     newArr.push(i)
+        //   }
+        // })
+        // for(key in i.relations) {
+        //   // console.log(key,'++++++++++++++')
+        //   if(key == '202.181.97.61'){
+        //     console.log(i)
+        //   }
+        // }
+        // if(i.relations['202.181.97.61']){
+        //   newArr.push(i)
+        // }
+        // Object.keys(i.relations).map((e) =>  console.log(e) ),
+      
+      })
+      console.log(newArr,'++')
+
+        // object.keys(this.graph_nodes.relations).forEach((key) => {
+        //   conosl.log(obj[key],'++++++++++++')
+        // })
+    }
+      function search(){
+      alert(1)
+    }
+    data = {
+      "city_assets_part": {
+        "石家庄": [
+          {
+            "city": "石家庄",
+            "ipNum": 1,
+            "ipPart": "202.181.97.61/32",
+            "ipSurviva": 1,
+            "isParent": "石家庄",
+            "name": "202.181.97.61/32",
+            "potrSum": 1,
+            "symbolSize": 26,
+            "relations": [{ '202.181.97.61': '交通', '202.181.97.62': '水利' }]
+          },
+        ],
+      },
+      "ip_part_port": {
+        "石家庄": [
+          {
+            "city": "石家庄",
+            "ipPart": "202.181.97.61",
+            "isParent": "202.181.97.61~202.181.97.61/32~主机设备~202.181.97.61/32~石家庄",
+            "name": "80~202.181.97.61~202.181.97.61/32~主机设备~202.181.97.61/32~石家庄",
+            "os": "FreeBSD 11.0-STABLE",
+            "port": 80,
+            "product": "nginx",
+            "type": "主机设备",
+            "symbolSize": 26,
+            "relations": [{'202.181.97.61': '交通'}]
+            
+          }
+        ],
+      },
+      "ip_part_ip": {
+        "石家庄": [
+          {
+            "city": "石家庄",
+            "ipPart": "202.181.97.61",
+            "isParent": "202.181.97.61/32~主机设备~202.181.97.61/32~石家庄",
+            "name": "202.181.97.61~202.181.97.61/32~主机设备~202.181.97.61/32~石家庄",
+            "type": "主机设备",
+            "symbolSize": 26,
+            "relations": [{'202.181.97.61': '交通'}]
+
+          }
+        ],
+      },
+      "assets_type": {
+        "石家庄": [
+          {
+            "city": "石家庄",
+            "ipNum": 1,
+            "ipPart": "202.181.97.61/32",
+            "isParent": "主机设备~202.181.97.61/32~石家庄",
+            "name": "202.181.97.61/32~主机设备~202.181.97.61/32~石家庄",
+            "potrSum": 1,
+            "type": "主机设备",
+            "symbolSize": 26,
+            "relations": [{'202.181.97.61': '交通'},{'202.181.97.61': '水利'}]
+          }
+        ],
+
+      },
+      "ip_part_assets_type": {
+        "石家庄": [
+          {
+            "city": "石家庄",
+            "highRiskPort": 0,
+            "ipNum": 1,
+            "ipPart": "202.181.97.61/32",
+            "ipSurviva": 1,
+            "isParent": "202.181.97.61/32",
+            "name": "主机设备~202.181.97.61/32~石家庄",
+            "nucleusNodes": 0,
+            "potrSum": 1,
+            "symbol": "assets/img/graph-host-icon.png",
+            "type": "主机设备",
+            "symbolSize": 26,
+            "relations": [{'202.181.97.61': '交通'}]
+
+          }
+        ],
+      }
+    }
+
+    var graph_nodes = []
+    var graph_links = []
+
+    let a = data.city_assets_part['石家庄']
+    let b = data.ip_part_assets_type['石家庄']
+    let c = data.assets_type['石家庄']
+    let d = data.ip_part_ip['石家庄']
+    let e = data.ip_part_port['石家庄']
+    console.log(a, b, c, d, e)
+    graph_nodes = a.concat(b.concat(c).concat(d).concat(e))
+    console.log(graph_nodes)
+
+    for (var i = 0; i < graph_nodes.length; i++) {
+      console.log(i)
+      graph_links.push({ source: graph_nodes[i].isParent, target: graph_nodes[i].name })
+    }
+    console.log(JSON.stringify(graph_nodes), '---')
+
+    console.log(JSON.stringify(graph_links), '-=')
+
+  
+  </script>
+</body>
+
+</html>
