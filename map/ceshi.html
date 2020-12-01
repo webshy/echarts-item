@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    const items = [{
+      name: "硬件层",
+      category: 0,
+      active: true,
+      // speed: '50 TPS',
+      value: [0, 300]
+    }, {
+      name: "系统层",
+      category: 0,
+      active: true,
+      // speed: '50 TPS',
+      value: [50, 300]
+    }, {
+      name: "应用层",
+      category: 0,
+      active: true,
+      // speed: '50 TPS',
+      value: [100, 300]
+    }, {
+      name: "支撑层",
+      category: 1,
+      value: [150, 300]
+    }, {
+      name: "服务器",
+      category: 1,
+      value: [200, 300]
+    }]
+    var list = [
+      {
+        name: "web邮件",
+        symbolSize: 10,
+
+        label: {
+          normal: {
+            fontSize: '14'
+          }
+        },
+      },
+      {
+        name: "维基百科",
+        symbolSize: 10,
+
+
+        label: {
+          normal: {
+            fontSize: '14'
+          }
+        },
+      }
+    ]
+    const links = items.map((el, i) => {
+      console.log(i)
+      return {
+        // source: el.name,
+        // source:  items.map((e) => {
+        //   console.log(e)
+        //   return e[i].name
+        // }),
+        // source: list[i].name,
+        target: el.name,
+        speed: el.speed,
+
+      }
+    })
+    // const links1 = items.forEach((el,i) => {
+    //   console.log(i)
+    //   // return {
+    //     // source: el.name,
+    //     // source:  items.map((e) => {
+    //     //   console.log(e)
+    //     //   return e[i].name
+    //     // }),
+    //     source = list[i].name,
+    //     target = el.name,
+    //     speed = el.speed,
+
+    // })
+    // const links1 = items.forEach((i, item) => {
+    //   console.log(i, item)
+
+    // })
+    var links1 = []
+    for (i = 0; i < items.length; i++) {
+      for (j = 0; j < list.length; j++) {
+        links1.push({
+          source: list[j].name,
+          target: items[i].name,
+          speed: items[i].speed,
+
+        })
+      }
+
+      // links1[i].source = list[i].name,
+      // links1[i].target = items[i].name,
+      // links1[i].speed = items[i].speed,
+
+    }
+    let a = [{ 'name': 1 }, { 'name': 2 }, { 'name': 3 }, { 'name': 4 }, { 'name': 5 },]
+    // let b = [{"name":0},{"name":0},{"name":0},{"name":0},{"name":0},{"name":0},{"name":0}]
+    let b = []
+    for (var i = 0; i < a.length; i++) {
+      b.push({ name: a[i].name })
+    }
+    console.log(links1, '---')
+  </script>
+</body>
+
+</html>

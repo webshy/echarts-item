@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    html,
+    body {
+      margin: 0;
+      height: 100%;
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="chart" class="chart" style="width:100%;height:100%"></div>
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+  <script src="./echarts-full.min.js"></script>
+  <script>
+    var myChart = echarts.init(document.getElementById('chart'));
+    option = {
+      // color: [
+      //   '#67001f', '#b2182b', '#d6604d', '#f4a582', '#fddbc7', '#d1e5f0', '#92c5de', '#4393c3', '#2166ac', '#053061'
+      // ],
+      tooltip: {
+        trigger: 'item',
+        triggerOn: 'mousemove'
+      },
+      animation: false,
+      series: [{
+        type: 'sankey',
+        bottom: '5%',
+        layout:'none',
+        // left:'20%',
+        // middle:'50%',
+        focusNodeAdjacency: 'allEdges',
+        // orient: 'vertical',
+        orient: 'horizontal',
+        label: {
+          // position: ['0%', '-400%'],
+          color: "#1f77b4",
+          borderColor: "#1f77b4"
+        },
+        lineStyle: {
+          color: 'source',
+          curveness: 0
+        },
+        nodeWidth: 20,
+        itemStyle: {
+          normal: {
+            borderWidth: 1,
+            borderColor: '#aaa'
+          }
+        },
+        data: [
+          // {
+          //   name: '产品技术架构图',
+          //   "itemStyle": {
+          //     "normal": {
+          //       "color": "#2D38C5",
+          //     }
+          //   }
+          // },
+          {
+            name: '内外网统一资产管理',
+            "itemStyle": {
+              "normal": {
+                "color": "#637A87",
+              }
+            }
+          },
+          {
+            name: '数据安全',
+            "itemStyle": {
+              "normal": {
+                "color": "#637A87",
+              }
+            }
+          },
+          {
+            name: '漏洞管理',
+            "itemStyle": {
+              "normal": {
+                "color": "#637A87",
+              }
+            }
+          },
+          {
+            name: '地区监管',
+            "itemStyle": {
+              "normal": {
+                "color": "#637A87",
+              }
+            }
+          },
+          {
+            name: '关保合规',
+            "itemStyle": {
+              "normal": {
+                "color": "#637A87",
+              }
+            }
+          },
+          {
+            name: '内网风险管理',
+            "itemStyle": {
+              "normal": {
+                "color": "#637A87",
+              }
+            }
+          },
+          {
+            name: '行业监管',
+            "itemStyle": {
+              "normal": {
+                "color": "#637A87",
+              }
+            }
+          },
+          {
+            name: '互联网信息监控',
+            "itemStyle": {
+              "normal": {
+                "color": "#637A87",
+              }
+            }
+          },
+          {
+            name: '观星台-关基',
+            "itemStyle": {
+              "normal": {
+                "color": "#637A87",
+              }
+            }
+          },
+          {
+            name: '观星台-标准',
+            "itemStyle": {
+              "normal": {
+                "color": "#637A87",
+              }
+            }
+          },
+          {
+            name: '观星台-监管',
+            "itemStyle": {
+              "normal": {
+                "color": "#637A87",
+              }
+            }
+          },
+          {
+            name: '观星台-内网',
+            "itemStyle": {
+              "normal": {
+                "color": "#637A87",
+              }
+            }
+          },
+          {
+            name: '星络-API',
+            "itemStyle": {
+              "normal": {
+                "color": "#637A87",
+              }
+            }
+          },
+          {
+            name: '星规',
+            "itemStyle": {
+              "normal": {
+                "color": "#637A87",
+              }
+            }
+          },
+          {
+            name: '数据管理平台',
+            "itemStyle": {
+              "normal": {
+                "color": "#637A87",
+              }
+            }
+          },
+          {
+            name: '行业舆情监控',
+            "itemStyle": {
+              "normal": {
+                "color": "#637A87",
+              }
+            }
+          },
+
+
+          {
+            name: '空间测绘平台',
+            "itemStyle": {
+              "normal": {
+                "color": "#637A87",
+              }
+            }
+          },
+          {
+            name: '能力中心',
+            "itemStyle": {
+              "normal": {
+                "color": "#637A87",
+              }
+            }
+          },
+          {
+            name: '企业SaaS检测平台',
+            "itemStyle": {
+              "normal": {
+                "color": "#637A87",
+              }
+            }
+          },
+          {
+            name: '资产识别引擎',
+            "itemStyle": {
+              "normal": {
+                "color": "#637A87",
+              }
+            }
+          },
+          {
+            name: '漏洞扫描引擎',
+            "itemStyle": {
+              "normal": {
+                "color": "#637A87",
+              }
+            }
+          },
+          {
+            name: 'API审计引擎',
+            "itemStyle": {
+              "normal": {
+                "color": "#637A87",
+              }
+            }
+          },
+          {
+            name: '数据加工中心',
+            "itemStyle": {
+              "normal": {
+                "color": "#637A87",
+              }
+            }
+          },
+          {
+            name: 'Passets',
+            "itemStyle": {
+              "normal": {
+                "color": "#637A87",
+              }
+            }
+          },
+          {
+            name: '数据泄露检测引擎',
+            "itemStyle": {
+              "normal": {
+                "color": "#637A87",
+              }
+            }
+          },
+          {
+            name: '情报中心',
+            "itemStyle": {
+              "normal": {
+                "color": "#637A87",
+              }
+            }
+          },
+          {
+            name: '舆情监控',
+            "itemStyle": {
+              "normal": {
+                "color": "#637A87",
+              }
+            }
+          },
+          {
+            name: '公众号小程序监控',
+            "itemStyle": {
+              "normal": {
+                "color": "#637A87",
+              }
+            }
+          },
+          {
+            name: '基础资产发现',
+            "itemStyle": {
+              "normal": {
+                "color": "#637A87",
+              }
+            }
+          },
+          {
+            name: '数据泄露',
+            "itemStyle": {
+              "normal": {
+                "color": "#637A87",
+              }
+            }
+          },
+          {
+            name: '漏洞情报',
+            "itemStyle": {
+              "normal": {
+                "color": "#637A87",
+              }
+            }
+          },
+          {
+            name: '移动资产发现',
+            "itemStyle": {
+              "normal": {
+                "color": "#637A87",
+              }
+            }
+          },
+          {
+            name: '数据清洗',
+            "itemStyle": {
+              "normal": {
+                "color": "#637A87",
+              }
+            }
+          },
+          {
+            name: '漏洞检测',
+            "itemStyle": {
+              "normal": {
+                "color": "#637A87",
+              }
+            }
+          },
+          {
+            name: 'API审计',
+            "itemStyle": {
+              "normal": {
+                "color": "#637A87",
+              }
+            }
+          },
+          {
+            name: '资产识别',
+            "itemStyle": {
+              "normal": {
+                "color": "#637A87",
+              }
+            }
+          },
+          {
+            name: '风险识别',
+            "itemStyle": {
+              "normal": {
+                "color": "#637A87",
+              }
+            }
+          },
+          {
+            name: '任务调度',
+            "itemStyle": {
+              "normal": {
+                "color": "#637A87",
+              }
+            }
+          },
+          {
+            name: '被动资产识别',
+            "itemStyle": {
+              "normal": {
+                "color": "#637A87",
+              }
+            }
+          },
+          {
+            name: '数据泄露检测',
+            "itemStyle": {
+              "normal": {
+                "color": "#637A87",
+              }
+            }
+          },
+          {
+            name: '威胁情报',
+            "itemStyle": {
+              "normal": {
+                "color": "#637A87",
+              }
+            }
+          },
+          {
+            name: '监管爬虫',
+            "itemStyle": {
+              "normal": {
+                "color": "#637A87",
+              }
+            }
+          }
+          ,
+          {
+            name: '微博爬虫',
+            "itemStyle": {
+              "normal": {
+                "color": "#637A87",
+              }
+            }
+          },
+          // {
+          //   name: '公众号小程序爬虫',
+          //   "itemStyle": {
+          //     "normal": {
+          //       "color": "#637A87",
+          //     }
+          //   }
+          // },
+          {
+            name: '暗网爬虫',
+            "itemStyle": {
+              "normal": {
+                "color": "#637A87",
+              }
+            }
+          },
+          {
+            name: '搜索引擎爬虫',
+            "itemStyle": {
+              "normal": {
+                "color": "#637A87",
+              }
+            }
+          },
+          {
+            name: '组织架构情报',
+            "itemStyle": {
+              "normal": {
+                "color": "#637A87",
+              }
+            }
+          },
+          {
+            name: '域名解析情报',
+            "itemStyle": {
+              "normal": {
+                "color": "#637A87",
+              }
+            }
+          },
+          {
+            name: '备案情报',
+            "itemStyle": {
+              "normal": {
+                "color": "#637A87",
+              }
+            }
+          },
+          {
+            name: 'IP情报',
+            "itemStyle": {
+              "normal": {
+                "color": "#637A87",
+              }
+            }
+          },
+          {
+            name: 'Github爬虫',
+            "itemStyle": {
+              "normal": {
+                "color": "#637A87",
+              }
+            }
+          },
+          {
+            name: '码云爬虫',
+            "itemStyle": {
+              "normal": {
+                "color": "#637A87",
+              }
+            }
+          },
+          {
+            name: '网盘监控',
+            "itemStyle": {
+              "normal": {
+                "color": "#637A87",
+              }
+            }
+          },
+          {
+            name: '移动资产',
+            "itemStyle": {
+              "normal": {
+                "color": "#637A87",
+              }
+            }
+          },
+          {
+            name: 'API识别',
+            "itemStyle": {
+              "normal": {
+                "color": "#637A87",
+              }
+            }
+          },
+          {
+            name: 'API风险审计',
+            "itemStyle": {
+              "normal": {
+                "color": "#637A87",
+              }
+            }
+          },
+          {
+            name: '数据脱敏验证',
+            "itemStyle": {
+              "normal": {
+                "color": "#637A87",
+              }
+            }
+          },
+          {
+            name: '数据跟踪',
+            "itemStyle": {
+              "normal": {
+                "color": "#637A87",
+              }
+            }
+          },
+          {
+            name: '网站漏洞检测',
+            "itemStyle": {
+              "normal": {
+                "color": "#637A87",
+              }
+            }
+          },
+          {
+            name: '主机漏洞检测',
+            "itemStyle": {
+              "normal": {
+                "color": "#637A87",
+              }
+            }
+          },
+          // {
+          //   name: '流量分析',
+          //   "itemStyle": {
+          //     "normal": {
+          //       "color": "#637A87",
+          //     }
+          //   }
+          // },
+          {
+            name: '指纹库',
+            "itemStyle": {
+              "normal": {
+                "color": "#637A87",
+              }
+            }
+          },
+          {
+            name: 'POC库',
+            "itemStyle": {
+              "normal": {
+                "color": "#637A87",
+              }
+            }
+          },
+          {
+            name: '流量拆包',
+            "itemStyle": {
+              "normal": {
+                "color": "#637A87",
+              }
+            }
+          },
+          {
+            name: 'CVE/CNVD/CNNVD漏洞库',
+            "itemStyle": {
+              "normal": {
+                "color": "#637A87",
+              }
+            }
+          },
+          {
+            name: '病毒库',
+            "itemStyle": {
+              "normal": {
+                "color": "#637A87",
+              }
+            }
+          },
+          {
+            name: '木马库',
+            "itemStyle": {
+              "normal": {
+                "color": "#637A87",
+              }
+            }
+          },
+          {
+            name: '黑名单',
+            "itemStyle": {
+              "normal": {
+                "color": "#637A87",
+              }
+            }
+          }
+
+
+        ],
+        links: [
+          {
+            source: '产品技术架构图',
+            target: '内外网统一资产管理',
+            value: 1
+          },
+          {
+            source: '产品技术架构图',
+            target: '数据安全',
+            value: 1
+          },
+          {
+            source: '产品技术架构图',
+            target: '漏洞管理',
+            value: 1
+          },
+          {
+            source: '产品技术架构图',
+            target: '地区监管',
+            value: 1
+          },
+          {
+            source: '产品技术架构图',
+            target: '关保合规',
+            value: 1
+          },
+          {
+            source: '产品技术架构图',
+            target: '内网风险管理',
+            value: 1
+          },
+          {
+            source: '产品技术架构图',
+            target: '行业监管',
+            value: 1
+          },
+          {
+            source: '内外网统一资产管理',
+            target: '观星台-标准',
+            value: 1
+          },
+          {
+            source: '内外网统一资产管理',
+            target: '观星台-内网',
+            value: 1
+          },
+          {
+            source: '数据安全',
+            target: '互联网信息监控',
+            value: 1
+          },
+          {
+            source: '数据安全',
+            target: '星络-API',
+            value: 1
+          },
+          {
+            source: '漏洞管理',
+            target: '观星台-标准',
+            value: 1
+          },
+          {
+            source: '地区监管',
+            target: '观星台-监管',
+            value: 1
+          },
+          {
+            source: '关保合规',
+            target: '观星台-关基',
+            value: 1
+          },
+          {
+            source: '内网风险管理',
+            target: '星规',
+            value: 1
+          },
+          {
+            source: '内网风险管理',
+            target: '数据管理平台',
+            value: 1
+          },
+          {
+            source: '行业监管',
+            target: '行业舆情监控',
+            value: 1
+          },
+          {
+            source: '行业监管',
+            target: '观星台-监管',
+            value: 1
+          },
+          {
+            source: '互联网信息监控',
+            target: '空间测绘平台',
+            value: 1
+          },
+          {
+            source: '空间测绘平台',
+            target: '舆情监控',
+            value: 1
+          },
+          {
+            source: '资产识别引擎',
+            target: '舆情监控',
+            value: 1
+          },
+          {
+            source: '漏洞扫描引擎',
+            target: '舆情监控',
+            value: 1
+          },
+          {
+            source: '漏洞情报',
+            target: '码云爬虫',
+            value: 1
+          },
+          {
+            source: '数据清洗',
+            target: '码云爬虫',
+            value: 1
+          },
+          {
+            source: '任务调度',
+            target: '码云爬虫',
+            value: 1
+          },
+          {
+            source: '互联网信息监控',
+            target: '能力中心',
+            value: 1
+          },
+          {
+            source: '互联网信息监控',
+            target: '企业SaaS检测平台',
+            value: 1
+          },
+          {
+            source: '互联网信息监控',
+            target: '情报中心',
+            value: 1
+          },
+          {
+            source: '观星台-关基',
+            target: '资产识别引擎',
+            value: 1
+          },
+          {
+            source: '观星台-关基',
+            target: '漏洞扫描引擎',
+            value: 1
+          },
+          {
+            source: '漏洞扫描引擎',
+            target: '舆情监控',
+            value: 1
+          },
+          {
+            source: '观星台-标准',
+            target: '企业SaaS检测平台',
+            value: 1
+          },
+          {
+            source: '观星台-监管',
+            target: '能力中心',
+            value: 1
+          },
+          {
+            source: '观星台-内网',
+            target: '资产识别引擎',
+            value: 1
+          },
+          {
+            source: '观星台-内网',
+            target: '漏洞扫描引擎',
+            value: 1
+          },
+          {
+            source: '观星台-内网',
+            target: 'API审计引擎',
+            value: 1
+          },
+          {
+            source: '观星台-内网',
+            target: '数据加工中心',
+            value: 1
+          },
+          {
+            source: '观星台-内网',
+            target: 'Passets',
+            value: 1
+          },
+          {
+            source: '星络-API',
+            target: '资产识别引擎',
+            value: 1
+          },
+          {
+            source: '星络-API',
+            target: 'API审计引擎',
+            value: 1
+          },
+          {
+            source: '星络-API',
+            target: 'Passets',
+            value: 1
+          },
+          {
+            source: '星规',
+            target: '数据加工中心',
+            value: 1
+          },
+          {
+            source: '数据管理平台',
+            target: 'API审计引擎',
+            value: 1
+          },
+          {
+            source: '数据管理平台',
+            target: '数据泄露检测引擎',
+            value: 1
+          },
+          {
+            source: '行业舆情监控',
+            target: '能力中心',
+            value: 1
+          },
+          {
+            source: '行业舆情监控',
+            target: '情报中心',
+            value: 1
+          },
+          {
+            source: '能力中心',
+            target: '舆情监控',
+            value: 1
+          },
+          {
+            source: '能力中心',
+            target: '公众号小程序监控',
+            value: 1
+          },
+          {
+            source: '能力中心',
+            target: '基础资产发现',
+            value: 1
+          },
+          {
+            source: '能力中心',
+            target: '基础资产发现',
+            value: 1
+          },
+          {
+            source: '能力中心',
+            target: '数据泄露',
+            value: 1
+          },
+          {
+            source: '能力中心',
+            target: '漏洞情报',
+            value: 1
+          },
+          {
+            source: '能力中心',
+            target: '移动资产发现',
+            value: 1
+          },
+          {
+            source: '能力中心',
+            target: '数据清洗',
+            value: 1
+          },
+          {
+            source: '企业SaaS检测平台',
+            target: '漏洞检测',
+            value: 1
+          },
+          {
+            source: '企业SaaS检测平台',
+            target: 'API审计',
+            value: 1
+          },
+          {
+            source: '企业SaaS检测平台',
+            target: '资产识别',
+            value: 1
+          },
+          {
+            source: '企业SaaS检测平台',
+            target: '任务调度',
+            value: 1
+          },
+          {
+            source: '企业SaaS检测平台',
+            target: '任务调度',
+            value: 1
+          },
+          {
+            source: 'API审计引擎',
+            target: 'API审计',
+            value: 1
+          },
+          {
+            source: 'API审计引擎',
+            target: '资产识别',
+            value: 1
+          },
+          {
+            source: '数据加工中心',
+            target: '数据清洗',
+            value: 1
+          },
+          {
+            source: '数据加工中心',
+            target: '风险识别',
+            value: 1
+          },
+          {
+            source: 'Passets',
+            target: '被动资产识别',
+            value: 1
+          },
+          {
+            source: '数据泄露检测引擎',
+            target: 'API审计',
+            value: 1
+          },
+          {
+            source: '数据泄露检测引擎',
+            target: '数据泄露检测',
+            value: 1
+          },
+          {
+            source: '情报中心',
+            target: '风险识别',
+            value: 1
+          },
+          {
+            source: '情报中心',
+            target: '威胁情报',
+            value: 1
+          }, {
+            source: '舆情监控',
+            target: '监管爬虫',
+            value: 1
+          }, {
+            source: '舆情监控',
+            target: '微博爬虫',
+            value: 1
+          }, {
+            source: '舆情监控',
+            target: '暗网爬虫',
+            value: 1
+          }, {
+            source: '舆情监控',
+            target: '组织架构情报',
+            value: 1
+          }, {
+            source: '公众号小程序监控',
+            target: '微博爬虫',
+            value: 1
+          }, {
+            source: '公众号小程序监控',
+            target: '组织架构情报',
+            value: 1
+          }, {
+            source: '基础资产发现',
+            target: '搜索引擎爬虫',
+            value: 1
+          }, {
+            source: '基础资产发现',
+            target: '组织架构情报',
+            value: 1
+          }, {
+            source: '基础资产发现',
+            target: '域名解析情报',
+            value: 1
+          }, {
+            source: '基础资产发现',
+            target: '备案情报',
+            value: 1
+          }, {
+            source: '基础资产发现',
+            target: 'IP情报',
+            value: 1
+          }, {
+            source: '数据泄露',
+            target: '暗网爬虫',
+            value: 1
+          }, {
+            source: '数据泄露',
+            target: '域名解析情报',
+            value: 1
+          }, {
+            source: '数据泄露',
+            target: '备案情报',
+            value: 1
+          }, {
+            source: '数据泄露',
+            target: 'Github爬虫',
+            value: 1
+          }, {
+            source: '数据泄露',
+            target: '码云爬虫',
+            value: 1
+          }, {
+            source: '数据泄露',
+            target: '网盘监控',
+            value: 1
+          }, {
+            source: '移动资产发现',
+            target: '移动资产',
+            value: 1
+          }, {
+            source: '漏洞检测',
+            target: '网站漏洞检测',
+            value: 1
+          }, {
+            source: '漏洞检测',
+            target: '主机漏洞检测',
+            value: 1
+          }, {
+            source: '漏洞检测',
+            target: 'POC库',
+            value: 1
+          }, {
+            source: 'API审计',
+            target: 'API风险审计',
+            value: 1
+          }, {
+            source: 'API审计',
+            target: '流量拆包',
+            value: 1
+          }, {
+            source: '资产识别',
+            target: 'API识别',
+            value: 1
+          }, {
+            source: '资产识别',
+            target: '指纹库',
+            value: 1
+          }, {
+            source: '风险识别',
+            target: 'CVE/CNVD/CNNVD漏洞库',
+            value: 1
+          }, {
+            source: '被动资产识别',
+            target: 'API识别',
+            value: 1
+          }, {
+            source: '被动资产识别',
+            target: '指纹库',
+            value: 1
+          }, {
+            source: '被动资产识别',
+            target: '流量拆包',
+            value: 1
+          },
+          {
+            source: '数据泄露检测',
+            target: 'API识别',
+            value: 1
+          },
+          {
+            source: '数据泄露检测',
+            target: '数据脱敏验证',
+            value: 1
+          },
+          {
+            source: '数据泄露检测',
+            target: '数据跟踪',
+            value: 1
+          },
+          {
+            source: '威胁情报',
+            target: '病毒库',
+            value: 1
+          },
+          {
+            source: '威胁情报',
+            target: '木马库',
+            value: 1
+          },
+          {
+            source: '威胁情报',
+            target: '黑名单',
+            value: 1
+          },
+
+
+
+
+
+
+        ]
+      }]
+    }
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+    window.addEventListener("resize", function () {
+      setTimeout(() => {
+        myChart.resize();
+      }, 1000)
+    });
+  </script>
+</body>
+
+</html>
