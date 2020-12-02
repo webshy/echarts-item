@@ -11,12 +11,23 @@
       margin: 0;
       height: 100%;
       width: 100%;
+      position: relative;
     }
-  </style>
+
+    .text {
+      position: absolute;
+      font-size: 18px;
+      left: 100px;
+      z-index: 9999;
+    }
+  </style>i
 </head>
 
 <body>
-  <div id="chart" class="chart" style="width:100%;height:100%"></div>
+  <div id="chart" class="chart" style="width:50%;height:100%">
+ 
+  </div>
+  <div>   <p class="text">5</p></div>
   <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
   <script src="./echarts-full.min.js"></script>
   <script>
@@ -24,38 +35,29 @@
     const targetCoord1 = [10, 40]
     const curveness = 0.2
     const linesData = []
+    // const color1 = '#637594'
+    // const color2 = '#5eb2ed'
+    // const color3 = '#2cd3ae'
+    // const color4 = '#f87087'
+    // const color5 = '#a278c0'
+    const color1 = 'rgba(99,117,148,0.8)'
+    const color2 = 'rgba(94,178,237,0.8)'
+    const color3 = 'rgba(44,211,174,0.8)'
+    const color4 = 'rgba(248,112,135,0.8)'
+    const color5 = 'rgba(162,120,192,0.8)'
+
+
     const categories = [{
-      name: '可用',
-      itemStyle: {
-        normal: {
-          color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [{
-            offset: 0,
-            color: '#01acca'
-          }, {
-            offset: 1,
-            color: '#5adbe7'
-          }]),
-        }
-      },
+      name: '',
       label: {
         show: false,
         normal: {
-          fontSize: '14'
+          fontSize: '14',
+          show: false,
         }
       },
     }, {
-      name: '不可用',
-      itemStyle: {
-        normal: {
-          color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [{
-            offset: 0,
-            color: '#ffb402'
-          }, {
-            offset: 1,
-            color: '#ffdc84'
-          }]),
-        }
-      },
+      name: '',
       label: {
         show: false,
         normal: {
@@ -64,24 +66,21 @@
       },
     }]
 
-
-
     const list = [
+      {
+        name: "4",
+        value: targetCoord,
+        symbolSize: 10,
+        label: {
+          normal: {
+            fontSize: '14'
+          }
+        },
+      },
       {
         name: "web邮件",
         value: targetCoord,
         symbolSize: 10,
-        itemStyle: {
-          normal: {
-            // color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [{
-            //   offset: 0,
-            //   color: '#157eff'
-            // }, {
-            //   offset: 1,
-            //   color: '#35c2ff'
-            // }]),
-          }
-        },
         label: {
           normal: {
             fontSize: '14'
@@ -92,17 +91,6 @@
         name: "维基百科",
         value: targetCoord1,
         symbolSize: 10,
-        itemStyle: {
-          normal: {
-            //   color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [{
-            //     offset: 0,
-            //     color: '#157eff'
-            //   }, {
-            //     offset: 1,
-            //     color: '#35c2ff'
-            //   }]),
-          }
-        },
         label: {
           normal: {
             fontSize: '14'
@@ -113,9 +101,6 @@
         name: "javaScript图形插件",
         value: [20, 40],
         symbolSize: 10,
-        itemStyle: {
-
-        },
         label: {
           normal: {
             fontSize: '14'
@@ -126,9 +111,6 @@
         name: "数据库管理",
         value: [30, 40],
         symbolSize: 10,
-        itemStyle: {
-
-        },
         label: {
           normal: {
             fontSize: '14'
@@ -139,9 +121,6 @@
         name: "评论系统",
         value: [40, 40],
         symbolSize: 10,
-        itemStyle: {
-
-        },
         label: {
           normal: {
             fontSize: '14'
@@ -152,9 +131,6 @@
         name: "文件工具",
         value: [50, 40],
         symbolSize: 10,
-        itemStyle: {
-
-        },
         label: {
           normal: {
             fontSize: '14'
@@ -165,9 +141,6 @@
         name: "CDN",
         value: [60, 40],
         symbolSize: 10,
-        itemStyle: {
-
-        },
         label: {
           normal: {
             fontSize: '14'
@@ -178,9 +151,6 @@
         name: "文件管理系统",
         value: [70, 40],
         symbolSize: 10,
-        itemStyle: {
-
-        },
         label: {
           normal: {
             fontSize: '14'
@@ -191,9 +161,6 @@
         name: "问题跟踪",
         value: [80, 40],
         symbolSize: 10,
-        itemStyle: {
-
-        },
         label: {
           normal: {
             fontSize: '14'
@@ -204,9 +171,6 @@
         name: "内容管理系统",
         value: [90, 40],
         symbolSize: 10,
-        itemStyle: {
-
-        },
         label: {
           normal: {
             fontSize: '14'
@@ -217,9 +181,6 @@
         name: "学习管理系统",
         value: [100, 40],
         symbolSize: 10,
-        itemStyle: {
-
-        },
         label: {
           normal: {
             fontSize: '14'
@@ -230,9 +191,6 @@
         name: "字体脚本",
         value: [110, 40],
         symbolSize: 10,
-        itemStyle: {
-
-        },
         label: {
           normal: {
             fontSize: '14'
@@ -243,9 +201,6 @@
         name: "操作系统",
         value: [120, 40],
         symbolSize: 10,
-        itemStyle: {
-
-        },
         label: {
           normal: {
             fontSize: '14'
@@ -256,9 +211,6 @@
         name: "开发工具",
         value: [130, 40],
         symbolSize: 10,
-        itemStyle: {
-
-        },
         label: {
           normal: {
             fontSize: '14'
@@ -269,9 +221,6 @@
         name: "远程访问",
         value: [140, 40],
         symbolSize: 10,
-        itemStyle: {
-
-        },
         label: {
           normal: {
             fontSize: '14'
@@ -282,9 +231,6 @@
         name: "媒体服务器",
         value: [150, 40],
         symbolSize: 10,
-        itemStyle: {
-
-        },
         label: {
           normal: {
             fontSize: '14'
@@ -295,9 +241,6 @@
         name: "网络设备",
         value: [160, 40],
         symbolSize: 10,
-        itemStyle: {
-
-        },
         label: {
           normal: {
             fontSize: '14'
@@ -308,9 +251,6 @@
         name: "Web服务器扩展",
         value: [170, 40],
         symbolSize: 10,
-        itemStyle: {
-
-        },
         label: {
           normal: {
             fontSize: '14'
@@ -321,9 +261,6 @@
         name: "数据库",
         value: [180, 40],
         symbolSize: 10,
-        itemStyle: {
-
-        },
         label: {
           normal: {
             fontSize: '14'
@@ -334,9 +271,6 @@
         name: "自动化营销",
         value: [190, 40],
         symbolSize: 10,
-        itemStyle: {
-
-        },
         label: {
           normal: {
             fontSize: '14'
@@ -352,7 +286,7 @@
       name: "硬件层",
       category: 0,
       active: true,
-      value: [0, 300],
+      value: [40, 260],
       itemStyle: {
         normal: {
           color: '#637594'
@@ -374,7 +308,7 @@
       name: "系统层",
       category: 0,
       active: true,
-      value: [50, 300],
+      value: [70, 260],
       itemStyle: {
         normal: {
           color: '#5eb2ed'
@@ -395,7 +329,7 @@
       name: "应用层",
       category: 0,
       active: true,
-      value: [100, 300],
+      value: [100, 260],
       itemStyle: {
         normal: {
           color: '#2cd3ae'
@@ -415,7 +349,7 @@
     }, {
       name: "支撑层",
       category: 1,
-      value: [150, 300],
+      value: [130, 260],
       itemStyle: {
         normal: {
           color: '#f87087'
@@ -433,9 +367,9 @@
         },
       }
     }, {
-      name: "服务器",
+      name: "服务层",
       category: 1,
-      value: [200, 300],
+      value: [160, 260],
       itemStyle: {
         normal: {
           color: '#a278c0'
@@ -447,9 +381,6 @@
           position: 'top',
           rotate: 0,
           color: '#a278c0'
-          // formatter: function (value) {
-          //   return value.data.name
-          // }
         },
       }
     }]
@@ -473,8 +404,8 @@
         "target": "web邮件",
         "lineStyle": {
           "normal": {
-            "color": "purple",
-            "curveness": 0.2
+            "color": color1,
+            "curveness": curveness
           }
         }
       },
@@ -483,8 +414,8 @@
         "target": "文件工具",
         "lineStyle": {
           "normal": {
-            "color": "#ff0000",
-            "curveness": 0.2
+            "color": color2,
+            "curveness": curveness
           }
         }
       },
@@ -493,8 +424,8 @@
         "target": "web邮件",
         "lineStyle": {
           "normal": {
-            "color": "#ff0000",
-            "curveness": 0.2
+            "color": color3,
+            "curveness": curveness
           }
         }
       },
@@ -503,18 +434,18 @@
         "target": "CDN",
         "lineStyle": {
           "normal": {
-            "color": "#ff0000",
-            "curveness": 0.2
+            "color": color4,
+            "curveness": curveness
           }
         }
       },
       {
-        "source": "服务器",
+        "source": "服务层",
         "target": "问题跟踪",
         "lineStyle": {
           "normal": {
-            "color": "#ff0000",
-            "curveness": 0.2
+            "color": color5,
+            "curveness": curveness
           }
         }
       },
@@ -523,8 +454,8 @@
         "target": "学习管理系统",
         "lineStyle": {
           "normal": {
-            "color": "#ff0000",
-            "curveness": 0.2
+            "color": color1,
+            "curveness": curveness
           }
         }
       },
@@ -533,8 +464,8 @@
         "target": "媒体服务器",
         "lineStyle": {
           "normal": {
-            "color": "#ff0000",
-            "curveness": 0.2
+            "color": color1,
+            "curveness": curveness
           }
         }
       },
@@ -543,8 +474,8 @@
         "target": "网络设备",
         "lineStyle": {
           "normal": {
-            "color": "#ff0000",
-            "curveness": 0.2
+            "color": color1,
+            "curveness": curveness
           }
         }
       },
@@ -553,8 +484,8 @@
         "target": "操作系统",
         "lineStyle": {
           "normal": {
-            "color": "#ff0000",
-            "curveness": 0.2
+            "color": color2,
+            "curveness": curveness
           }
         }
       },
@@ -563,8 +494,18 @@
         "target": "数据库",
         "lineStyle": {
           "normal": {
-            "color": "#ff0000",
-            "curveness": 0.2
+            "color": color2,
+            "curveness": curveness
+          }
+        }
+      },
+      {
+        "source": "系统层",
+        "target": "内容管理系统",
+        "lineStyle": {
+          "normal": {
+            "color": color2,
+            "curveness": curveness
           }
         }
       },
@@ -573,8 +514,8 @@
         "target": "维基百科",
         "lineStyle": {
           "normal": {
-            "color": "#ff0000",
-            "curveness": 0.2
+            "color": color3,
+            "curveness": curveness
           }
         }
       },
@@ -583,8 +524,8 @@
         "target": "评论系统",
         "lineStyle": {
           "normal": {
-            "color": "#ff0000",
-            "curveness": 0.2
+            "color": color3,
+            "curveness": curveness
           }
         }
       },
@@ -593,8 +534,8 @@
         "target": "文件管理系统",
         "lineStyle": {
           "normal": {
-            "color": "#ff0000",
-            "curveness": 0.2
+            "color": color3,
+            "curveness": curveness
           }
         }
       },
@@ -603,18 +544,18 @@
         "target": "字体脚本",
         "lineStyle": {
           "normal": {
-            "color": "#ff0000",
-            "curveness": 0.2
+            "color": color3,
+            "curveness": curveness
           }
         }
       },
       {
         "source": "应用层",
-        "target": "操作系统",
+        "target": "Web服务器扩展",
         "lineStyle": {
           "normal": {
-            "color": "#ff0000",
-            "curveness": 0.2
+            "color": color3,
+            "curveness": curveness
           }
         }
       },
@@ -623,8 +564,8 @@
         "target": "开发工具",
         "lineStyle": {
           "normal": {
-            "color": "#ff0000",
-            "curveness": 0.2
+            "color": color3,
+            "curveness": curveness
           }
         }
       },
@@ -633,18 +574,18 @@
         "target": "web服务器扩展",
         "lineStyle": {
           "normal": {
-            "color": "#ff0000",
-            "curveness": 0.2
+            "color": color3,
+            "curveness": curveness
           }
         }
       },
       {
         "source": "应用层",
-        "target": "自动化影响",
+        "target": "自动化营销",
         "lineStyle": {
           "normal": {
-            "color": "#ff0000",
-            "curveness": 0.2
+            "color": color3,
+            "curveness": curveness
           }
         }
       },
@@ -653,8 +594,8 @@
         "target": "数据库管理",
         "lineStyle": {
           "normal": {
-            "color": "#ff0000",
-            "curveness": 0.2
+            "color": color4,
+            "curveness": curveness
           }
         }
       },
@@ -663,28 +604,28 @@
         "target": "自动化营销",
         "lineStyle": {
           "normal": {
-            "color": "#ff0000",
-            "curveness": 0.2
+            "color": color4,
+            "curveness": curveness
           }
         }
       },
       {
-        "source": "服务器",
+        "source": "服务层",
         "target": "javaScript图形插件",
         "lineStyle": {
           "normal": {
-            "color": "#ff0000",
-            "curveness": 0.2
+            "color": color5,
+            "curveness": curveness
           }
         }
       },
       {
-        "source": "服务器",
+        "source": "服务层",
         "target": "远程访问",
         "lineStyle": {
           "normal": {
-            "color": "#ff0000",
-            "curveness": 0.2
+            "color": color5,
+            "curveness": curveness
           }
         }
       }
@@ -707,9 +648,9 @@
         },
         selectedMode: false,
         right: 0,
-        data: categories.map(function (el) {
-          return el.name
-        })
+        // data: categories.map(function (el) {
+        //   return el.name
+        // })
       }],
       xAxis: {
         show: false,
@@ -725,22 +666,6 @@
         coordinateSystem: 'cartesian2d',
         symbolSize: 60,
         z: 3,
-        // edgeLabel: {
-        //   normal: {
-        //     show: true,
-        //     textStyle: {
-        //       fontSize: 14
-        //     },
-        //     formatter: function (params) {
-        //       let txt = ''
-        //       if (params.data.speed !== undefined) {
-        //         txt = params.data.speed
-        //       }
-        //       return txt
-        //     },
-        //   }
-        // },
-        // legendHoverLink : true,
         focusNodeAdjacency: true,
         label: {
           normal: {
@@ -765,36 +690,15 @@
         },
         lineStyle: {
           normal: {
-            width: 2,
-            shadowColor: 'none'
+            width: 8,
+            // shadowColor: 'none',
           },
         },
-        // edgeSymbol: ['none', 'arrow'],
         edgeSymbolSize: 8,
         data: data,
         links: links,
         categories: categories
       },
-        //  {
-        //   name: 'A',
-        //   type: 'lines',
-        //   coordinateSystem: 'cartesian2d',
-        //   z: 1,
-        //   // effect: {
-        //   //   show: true,
-        //   //   smooth: false,
-        //   //   trailLength: 0,
-        //   //   // symbol: "arrow",
-        //   //   color: 'rgba(55,155,255,0.5)',
-        //   //   symbolSize: 12
-        //   // },
-        //   lineStyle: {
-        //     normal: {
-        //       curveness: curveness
-        //     }
-        //   },
-        //   data: linesData
-        // }
       ]
     }
     var myChart = echarts.init(document.getElementById('chart'));
