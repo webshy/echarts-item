@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="sheet.js"></script>
+  <title>Document</title>
+</head>
+
+<body>
+  <div style="margin:20px">
+    <input type="file" onchange="change(this)" style="width: 320px;"
+      accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
+    <pre><p style="font-family: sans-serif;"></p></pre>
+  </div>
+  <script>
+    var excelData;
+    function change(obj) {
+      if (!obj.files) {
+        return;
+      }
+      var file = obj.files[0];
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        var data = e.target.result;
+        excelData = XLSX.read(data, {
+          type: 'binary'
+        });
+        //excelData.SheetNames[0]是获取Sheets中第一个Sheet的名字
+        //excelData.Sheets[Sheet名]获取第一个Sheet的数据
+        var json = XLSX.utils.sheet_to_json(excelData.Sheets[excelData.SheetNames[0]]);
+        document.querySelector("p").innerHTML = JSON.stringify(json, null, "\t");
+      };
+      reader.readAsBinaryString(file);
+    }
+  </script>
+</body>
+
+</html>

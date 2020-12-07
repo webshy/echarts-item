@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var arr = [["h", 18, "aa"], ["s", 20, "bb"]]
+    var obj = {}
+    var arr2 = [{}]
+    arr.map((d, index) => {
+      d.map((t, i) => {
+        if (index === 0) {
+          obj[t] = [];
+        }else{
+          obj[arr[0][i]].push(t);
+        }
+      })
+
+    })
+    var titles = arr[0];
+    arr.slice(1,arr.length).map((d,index) => {
+      arr2.push({});
+      d.map((t, i) => {
+        arr2[index][titles[i]] = t;
+      })
+
+    })
+    console.log(arr2);
+  var newArr = [ 
+    {},
+    {}
+  ]
+  </script>
+</body>
+
+</html>
