@@ -17,8 +17,8 @@
 
 <body>
   <div style="display: flex;height:100%">
-    <div id="chart" class="chart" style="width:50%;height:100%"></div>
-    <div id="chart2" class="chart2" style="width:50%;height:100%"></div>
+    <div id="chart" class="chart" style="width:45%;height:90%"></div>
+    <div id="chart2" class="chart2" style="width:65%;height:100%"></div>
   </div>
   <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
   <script src="./echarts-full.min.js"></script>
@@ -363,15 +363,15 @@
 
     const data = items.concat(list)
 
-    items.forEach(function (el) {
-      if (el.active) {
-        linesData.push([{
-          coord: el.value
-        }, {
-          coord: targetCoord
-        }])
-      }
-    })
+    // items.forEach(function (el) {
+    //   if (el.active) {
+    //     linesData.push([{
+    //       coord: el.value
+    //     }, {
+    //       coord: targetCoord
+    //     }])
+    //   }
+    // })
 
 
     var links = [
@@ -608,6 +608,11 @@
     ]
 
     option = {
+      title: {
+        text: '组件用途分类归属展示',
+        left: '20',
+        top: '30'
+      },
       legend: [{
         formatter: function (name) {
           return echarts.format.truncateText(name, 100, '14px Microsoft Yahei', '…');
@@ -691,8 +696,9 @@
     myChart2.setOption(option = {
 
       title: {
-        text: '',
-        left: 'center'
+        text: '组件分层top100',
+        left: '60',
+        top: '30'
       },
 
       tooltip: {
@@ -706,23 +712,23 @@
           }
 
           return [
-            '<div class="tooltip-title">' + formatUtil.encodeHTML(treePath.join('/')) + '</div>',
+            '<div class="tooltip-title">' + formatUtil.encodeHTML(treePath.join('-')) + '</div>',
           ].join('');
         }
       },
       color: ['#637594', '#5eb2ed', '#2cd3ae', '#f87087', '#a278c0'],
       series: [
         {
-          name: 'GAP Progress Overview',
+          breadcrumb: { show: false },
+          name: '',
           type: 'treemap',
           visibleMin: 300,
           label: {
             show: true,
-            // color: '#000',
-            // 文字颜色
-            color: '#fff',
             formatter: '{b}'
           },
+          nodeClick: false,
+          roam: false,
           upperLabel: {
             show: true,
             color: '#fff',
@@ -735,11 +741,6 @@
           data: [{
             name: '硬件层',            // Second tree
             value: 10,
-            // itemStyle: {
-            //   "normal": {
-            //     "color": "red",
-            //   }
-            // },
             children: [{
               name: '绘制墙体',       // Son of first tree
               value: 20,
@@ -845,14 +846,14 @@
         }
       ]
     });
-    function colorMappingChange(value) {
-      var levelOption = getLevelOption(value);
-      chart.setOption({
-        series: [{
-          levels: levelOption
-        }]
-      });
-    }
+    // function colorMappingChange(value) {
+    //   var levelOption = getLevelOption(value);
+    //   chart.setOption({
+    //     series: [{
+    //       levels: levelOption
+    //     }]
+    //   });
+    // }
 
     var formatUtil = echarts.format;
 
@@ -872,11 +873,11 @@
           itemStyle: {
             borderColor: '#555555',
             borderWidth: 3,
-            gapWidth: 1
+            gapWidth: 1,
           },
           emphasis: {
             itemStyle: {
-              borderColor: '#ddd'
+              borderColor: '#343434'
             }
           }
         },
